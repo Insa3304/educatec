@@ -6,6 +6,8 @@ import { AuthModel } from '../models/auth.model';
 import { AuthHTTPService } from './auth-http';
 import { environment } from 'src/environments/environment';
 import { Router } from '@angular/router';
+import  {HttpClient} from '@angular/common/http'
+import { URL_SERVICIOS } from 'src/app/config/config';
 
 export type UserType = UserModel | undefined;
 
@@ -33,7 +35,8 @@ export class AuthService implements OnDestroy {
 
   constructor(
     private authHttpService: AuthHTTPService,
-    private router: Router
+    private router: Router,
+    private http: HttpClient,
   ) {
     this.isLoadingSubject = new BehaviorSubject<boolean>(false);
     this.currentUserSubject = new BehaviorSubject<UserType>(undefined);
@@ -44,14 +47,15 @@ export class AuthService implements OnDestroy {
   }
 
   // public methods
-  login(email: string, password: string): Observable<UserType> {
+  login(email: string, password: string): Observable<any>{ //recepciona el email y el password , any para seguir nuestro propio modelo
     this.isLoadingSubject.next(true);
-    return this.authHttpService.login(email, password).pipe(
-      map((auth: AuthModel) => {
-        const result = this.setAuthFromLocalStorage(auth);
+    return this.http.post(URL_SERVICIOS+"/auth/login",{email: email,password: password}).pipe( //como ya tenemos rutas definidas concatenamos
+      map((auth: any) => {
+        console.log(auth);
+        const result = this.setAuthFromLocalStorage(auth); //el resultado que envie el api se almacena en local storage
         return result;
       }),
-      switchMap(() => this.getUserByToken()),
+      
       catchError((err) => {
         console.error('err', err);
         return of(undefined);
@@ -61,21 +65,22 @@ export class AuthService implements OnDestroy {
   }
 
   logout() {
-    localStorage.removeItem(this.authLocalStorageToken);
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
     this.router.navigate(['/auth/login'], {
       queryParams: {},
     });
   }
 
-  getUserByToken(): Observable<UserType> {
+  getUserByToken(): Observable<any> { //poder recibir el token y el usuario que este almacenado en el local storage
     const auth = this.getAuthFromLocalStorage();
-    if (!auth || !auth.authToken) {
+    if (!auth) {
       return of(undefined);
     }
 
     this.isLoadingSubject.next(true);
-    return this.authHttpService.getUserByToken(auth.authToken).pipe(
-      map((user: UserType) => {
+    return of(auth).pipe(
+      map((user: any) => {
         if (user) {
           this.currentUserSubject.next(user);
         } else {
@@ -111,23 +116,25 @@ export class AuthService implements OnDestroy {
   }
 
   // private methods
-  private setAuthFromLocalStorage(auth: AuthModel): boolean {
+  private setAuthFromLocalStorage(auth: any): boolean { /*aqui debe devolver true porque en el login component.ts 
+    esta esperando si te envia al home sino un error*/
     // store auth authToken/refreshToken/epiresIn in local storage to keep user logged in between page refreshes
-    if (auth && auth.authToken) {
-      localStorage.setItem(this.authLocalStorageToken, JSON.stringify(auth));
+    if (auth && auth.access_token) { //si existe el token lo vas a almacenar de esta manera
+      localStorage.setItem("token", auth.access_token); //almacenamos nuestro token
+      localStorage.setItem("user", JSON.stringify(auth.user));
       return true;
     }
     return false;
   }
 
-  private getAuthFromLocalStorage(): AuthModel | undefined {
+  private getAuthFromLocalStorage(): any {
     try {
-      const lsValue = localStorage.getItem(this.authLocalStorageToken);
+      const lsValue = localStorage.getItem("user"); //si no existe nada es indefinido
       if (!lsValue) {
         return undefined;
       }
 
-      const authData = JSON.parse(lsValue);
+      const authData = JSON.parse(lsValue); //si existe lo pasas el valor del usuario que se ha autenticado
       return authData;
     } catch (error) {
       console.error(error);

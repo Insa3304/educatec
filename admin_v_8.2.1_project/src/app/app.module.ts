@@ -23,7 +23,7 @@ function appInitializer(authService: AuthService) {
   return () => {
     return new Promise((resolve) => {
       //@ts-ignore
-      authService.getUserByToken().subscribe().add(resolve);
+      authService.getUserByToken().subscribe().add(resolve); //getUser funcion que devuelve usuario y toke que se acaba de autenticar
     });
   };
 }
