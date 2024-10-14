@@ -126,7 +126,7 @@
                 <div class="header-left rbt-header-content">
                     <div class="header-info">
                         <div class="logo">
-                            <a href="index.html">
+                            <a routerLink="/">
                                 <img src="assets/images/logo/logo.png" alt="Education Logo Images">
                             </a>
                         </div>
@@ -898,19 +898,21 @@
                         </li>
   
                         <li class="account-access rbt-user-wrapper d-none d-xl-block">
-                            <a href="#"><i class="feather-user"></i>Admin</a>
+                            <a href="#" *ngIf="user"><i class="feather-user"></i>{{user.name}}-</a> 
+                            <a href="#" *ngIf="!user"><i class="feather-user"></i>Ingresar</a>
+                            
                             <div class="rbt-user-menu-list-wrapper">
                                 <div class="inner">
-                                    <div class="rbt-admin-profile">
+                                    <div class="rbt-admin-profile" *ngIf="user">
                                         <div class="admin-thumbnail">
                                             <img src="assets/images/team/avatar.jpg" alt="User Images">
                                         </div>
                                         <div class="admin-info">
-                                            <span class="name">Nipa Bali</span>
+                                            <span class="name">{{user.name}}</span>
                                             <a class="rbt-btn-link color-primary" href="profile.html">View Profile</a>
                                         </div>
                                     </div>
-                                    <ul class="user-list-wrapper">
+                                    <ul class="user-list-wrapper" *ngIf="user">
                                         <li>
                                             <a href="instructor-dashboard.html">
                                                 <i class="feather-home"></i>
@@ -977,12 +979,23 @@
                                                 <span>Settings</span>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="index.html">
+                                        <li *ngIf="user">
+                                            <a href="#" onclick = "return false;"(click)="logout()">
                                                 <i class="feather-log-out"></i>
                                                 <span>Logout</span>
                                             </a>
                                         </li>
+                                        
+                                    
+                                    <li *ngIf="!user">
+                                        <a routerLink="auth/login">
+                                            <i class="feather-log-out"></i>
+                                            <span>Login</span>
+                                        
+                                        
+                                        </a>
+                                    </li>
+
                                     </ul>
                                 </div>
                             </div>

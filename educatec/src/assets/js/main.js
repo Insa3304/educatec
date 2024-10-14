@@ -9,7 +9,7 @@ function HOMEINIT ( $, undefined) {
             eduJs.methods();
         },
 
-        d: function (e) {
+        d: function (e) { //Edu js es una clase que me permite usar variables de manera externa
             this._window = $(window),
                 this._document = $(document),
                 this._body = $('body'),
@@ -655,36 +655,7 @@ function HOMEINIT ( $, undefined) {
         },
 
 
-        _clickDoc: function () {
-            var inputblur, inputFocus, openSideNav, closeSideNav;
-            inputblur = function (e) {
-				if (!$(this).val()) {
-					$(this).parent('.form-group').removeClass('focused');
-				}
-            };
-            inputFocus = function (e) {
-				$(this).parents('.form-group').addClass('focused');
-            };
-            openSideNav = function (e) {
-                e.preventDefault();
-                eduJs.sideNav.addClass('active');
-                $('.search-trigger-active').addClass('open');
-                eduJs._html.addClass('side-nav-opened');
-            };
-
-            closeSideNav = function (e) {
-				if (!$('.rbt-search-dropdown, .rbt-search-dropdown *:not(".search-trigger-active, .search-trigger-active *")').is(e.target)) {
-                    eduJs.sideNav.removeClass('active');
-                    $('.search-trigger-active').removeClass('open');
-                    eduJs._html.removeClass('side-nav-opened');
-                }
-            };
-            eduJs._document
-            .on('blur', 'input,textarea,select', inputblur)
-            .on('focus', 'input:not([type="radio"]),input:not([type="checkbox"]),textarea,select', inputFocus)
-            .on('click', '.search-trigger-active', openSideNav)
-            .on('click', '.side-nav-opened', closeSideNav)
-        },
+        
 
         wowActivation: function () {
             new WOW().init();
@@ -1013,3 +984,34 @@ function HOMEINIT ( $, undefined) {
 
 };
 //(window, document, jQuery);
+
+ function _clickDoc() {
+    var inputblur, inputFocus, openSideNav, closeSideNav;
+    inputblur = function (e) {
+        if (!$(this).val()) {
+            $(this).parent('.form-group').removeClass('focused');
+        }
+    };
+    inputFocus = function (e) {
+        $(this).parents('.form-group').addClass('focused');
+    };
+    /*openSideNav = function (e) {
+        e.preventDefault();
+        eduJs.sideNav.addClass('active');
+        $('.search-trigger-active').addClass('open');
+        eduJs._html.addClass('side-nav-opened');
+    };
+
+    closeSideNav = function (e) {
+        if (!$('.rbt-search-dropdown, .rbt-search-dropdown *:not(".search-trigger-active, .search-trigger-active *")').is(e.target)) {
+            eduJs.sideNav.removeClass('active');
+            $('.search-trigger-active').removeClass('open');
+            eduJs._html.removeClass('side-nav-opened');
+        }
+    };*/
+    $(document)
+    .on('blur', 'input,textarea,select', inputblur)
+    .on('focus', 'input:not([type="radio"]),input:not([type="checkbox"]),textarea,select', inputFocus)
+   // .on('click', '.search-trigger-active', openSideNav)
+   // .on('click', '.side-nav-opened', closeSideNav)
+}
