@@ -28,7 +28,7 @@ export class AuthService {
 
   login(email: string, password:string) 
   {
-    let URL = URL_SERVICIOS+"/auth/login";
+    let URL = URL_SERVICIOS+"/auth/login_tienda";
     return this.http.post(URL,{email: email, password: password}).pipe( 
       map((auth: any) => {
         console.log(auth);
@@ -54,7 +54,10 @@ export class AuthService {
     return false;
   }
 
-  register(){
+  register(data:any){
+
+    let URL= URL_SERVICIOS+ "/auth/register";
+    return this.http.post(URL,data);
 
   }
   logout(){
