@@ -64,7 +64,7 @@ export class LoginComponent implements OnInit {
     return;
   }
   let data = {
-    email:this.email ,
+    email:this.email_register ,
     name: this.name,
     surname: this.surname,
     password: this.password_register,

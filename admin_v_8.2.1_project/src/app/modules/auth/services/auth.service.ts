@@ -32,7 +32,8 @@ export class AuthService implements OnDestroy {
   set currentUserValue(user: UserType) {
     this.currentUserSubject.next(user);
   }
-
+    token: any=null;
+    user: any=null;
   constructor(
     private authHttpService: AuthHTTPService,
     private router: Router,
@@ -133,7 +134,8 @@ export class AuthService implements OnDestroy {
       if (!lsValue) {
         return undefined;
       }
-
+        this.token = localStorage.getItem("token");
+        this.user = JSON.parse(lsValue);
       const authData = JSON.parse(lsValue); //si existe lo pasas el valor del usuario que se ha autenticado
       return authData;
     } catch (error) {

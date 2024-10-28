@@ -34,6 +34,13 @@ const Routing: Routes = [
     loadChildren: () => import('../modules/apps/chat/chat.module').then((m) => m.ChatModule),
     // data: { layout: 'light-sidebar' },
   },
+  
+  {
+    path: 'users', //defino mi modulo para acceder a ella 
+    loadChildren: () => import('../modules/user/user.module').then((m) => m.UserModule),
+    
+  },
+
   {
     path: 'apps/users',
     loadChildren: () => import('./user/user.module').then((m) => m.UserModule),
