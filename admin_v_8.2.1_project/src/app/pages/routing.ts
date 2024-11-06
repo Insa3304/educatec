@@ -40,6 +40,11 @@ const Routing: Routes = [
     loadChildren: () => import('../modules/user/user.module').then((m) => m.UserModule),
     
   },
+  {
+    path: 'categorias', 
+    loadChildren: () => import('../modules/categories/categories.module').then((m) => m.CategoriesModule),
+    
+  },
 
   {
     path: 'apps/users',

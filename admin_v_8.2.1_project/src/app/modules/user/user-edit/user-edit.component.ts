@@ -20,6 +20,9 @@ export class UserEditComponent {
   password : any = null;
   confirmation_password : any =null;
   state:any = 1;
+  is_instructor:any = null;
+  profesionany: any = null;
+  description :any = null;
 
   imagen_previsualiza: any= "./assets/media/avatars/300-6.jpg";
   file_avatar: any= null; //imagen que se desee subir

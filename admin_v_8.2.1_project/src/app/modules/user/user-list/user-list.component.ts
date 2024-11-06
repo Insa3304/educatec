@@ -29,7 +29,7 @@ export class UserListComponent implements OnInit{
   } 
  
 
- listUser(){
+  listUser(){
   this.userService.listUsers(this.search,this.state).subscribe((resp:any)=> {
     console.log(resp)//recibo todos los usuarios desde el backend de tipo admin
     this.USERS = resp.users.data;
