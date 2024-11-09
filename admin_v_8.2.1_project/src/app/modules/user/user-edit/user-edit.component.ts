@@ -21,7 +21,7 @@ export class UserEditComponent {
   confirmation_password : any =null;
   state:any = 1;
   is_instructor:any = null;
-  profesionany: any = null;
+  profesion: any = null;
   description :any = null;
 
   imagen_previsualiza: any= "./assets/media/avatars/300-6.jpg";
@@ -41,6 +41,9 @@ export class UserEditComponent {
     this.email=this.user.email;
     this.state=this.user.state;
     this.imagen_previsualiza=this.user.avatar;
+    this.is_instructor = this.user.is_instructor;
+    this.profesion= this.user.profesion;
+    this.description= this.user.description;
   }
   cerrarModal(): void{
     this.modal.dismiss(); //cerrar ventana emergente
@@ -76,6 +79,11 @@ export class UserEditComponent {
       formData.append("surname", this.surname);
       formData.append("email", this.email);
       formData.append("state", this.state);
+      if(this.is_instructor){
+        formData.append("is_instructor", this.is_instructor ? "1" : "0");
+        formData.append("profesion", this.profesion);
+      formData.append("description", this.description);
+      }
       if(this.password){
         formData.append("password", this.password);
     }
@@ -93,6 +101,9 @@ export class UserEditComponent {
         this.modal.close();
       })
 
+}
+isInstructor(){
+  this.is_instructor =!this.is_instructor;
 }
 }
 

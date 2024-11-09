@@ -25,7 +25,7 @@ class UserGResource extends JsonResource
             "profesion" =>$this->resource->profesion,
             "description" =>$this->resource->description,
 
-            "create_at"=> $this->resource->created_at-> format("Y-m-d h:i:s"),
+            "create_at"=> $this->resource->created_at-> format("D-m-y h:i:s"),
             "avatar"=> env("APP_URL")."storage/" .$this->resource->avatar, //toma la url de la variable de entorno
 
         ];

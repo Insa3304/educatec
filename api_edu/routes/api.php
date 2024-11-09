@@ -1,10 +1,16 @@
 <?php
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\Course\ClaseGController;
+use App\Http\Controllers\Admin\Course\CourseGController;
+use App\Http\Controllers\Admin\Course\SeccionGController;
 use App\Http\Controllers\Admin\Course\CategorieController;
+
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,9 +22,11 @@ use App\Http\Controllers\Admin\Course\CategorieController;
 |
 */
 
-//Route::middleware('auth:api')->get('/user', function (Request $request) {
- //   return $request->user();
-//});
+
+// Route::middleware('auth:api')->get('/user', function (Request $request) {
+//     return $request->user();
+// });
+
 
 Route::group([
     'middleware' => 'api',
@@ -31,17 +39,31 @@ Route::group([
     Route::post('/refresh', [AuthController::class, 'refresh'])->name('refresh');
     Route::post('/me', [AuthController::class, 'me'])->name('me');
 });
-
 Route::group([
     'middleware' => 'api',
-    
 ], function ($router) {
-    Route::resource('/users', UserController::class);
-    Route::post('/users/{id}', [UserController::class, "update"]);
-
+    Route::resource('/users',UserController::class);
+    Route::post('/users/{id}',[UserController::class, "update"]);
+    //
     Route::resource('/categorie',CategorieController::class);
     Route::post('/categorie/{id}',[CategorieController::class, "update"]);
 
 
-    
+    //
+    Route::get('/course/config',[CourseGController::class, "config"]);
+    Route::resource('/course',CourseGController::class);
+    Route::post('/course/upload_video/{id}',[CourseGController::class, "upload_video"]);
+    Route::post('/course/{id}',[CourseGController::class, "update"]);
+
+
+    Route::resource('/course-section',SeccionGController::class);
+
+
+    Route::resource('/course-clases',ClaseGController::class);
+    Route::post('/course-clases-file',[ClaseGController::class, "addFiles"]);
+    Route::delete('/course-clases-file/{id}',[ClaseGController::class, "removeFiles"]);
+    Route::post('/course-clases/upload_video/{id}',[ClaseGController::class, "upload_video"]);
 });
+
+
+
