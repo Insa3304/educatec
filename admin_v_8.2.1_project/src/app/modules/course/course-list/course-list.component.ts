@@ -5,7 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
-  selector: 'app-course-list',
+  selector: 'app-course-lits',
   templateUrl: './course-list.component.html',
   styleUrls: ['./course-list.component.scss']
 })
@@ -49,7 +49,5 @@ export class CourseListComponent implements OnInit {
     })
   }
 }
-
-
 
 

@@ -30,7 +30,7 @@ export class CategorieEditComponent implements OnInit {
   ) { }
  
 
-  ngOnInit(): void {
+ /* ngOnInit(): void {
     this.isLoading = this.categorieService.isLoading$;
     this.name = this.categorie.name;
     this.selected_option = this.categorie.categorie_id ? 2 : 1;
@@ -39,8 +39,18 @@ export class CategorieEditComponent implements OnInit {
     this.state = this.categorie.state;
 
   
-  }
-
+  }*/
+    ngOnInit(): void {
+      this.isLoading = this.categorieService.isLoading$;
+      this.name = this.categorie.name;
+      this.selected_option = this.categorie.categorie_id ? 2 : 1;
+      this.IMAGEN_PREVISUALIZA = this.categorie.imagen ? this.categorie.imagen : "./assets/media/avatars/300-6.jpg";
+      
+      // Asigna el valor de categorie_id correctamente
+      this.categorie_id = this.categorie.categorie_id || null;
+      console.log('Categorie ID:', this.categorie_id); // Verifica el valor
+      console.log('CATEGORIES:', this.CATEGORIES);
+    }
   processAvatar($event: any) {
     if ($event.target.files[0].type.indexOf("image") < 0) {
       this.toastr.error('SOLAMENTE SE ACEPTAN IMÁGENES', 'MENSAJE DE VALIDACIÓN');

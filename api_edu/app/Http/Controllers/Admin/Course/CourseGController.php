@@ -30,7 +30,6 @@ class CourseGController extends Controller
         $state = $request->state;
 
 
-        // filterAdvance($search,$state)->
         $courses = Course::filterAdvance($search,$state)->orderBy("id","desc")->get();
 
 
@@ -86,8 +85,7 @@ class CourseGController extends Controller
             $request->request->add(["imagen" => $path]);
         }
         $request->request->add(["slug" => Str::slug($request->title)]);
-        $request->request->add(["requirements" => json_encode(explode(",",$request->requirements))]);
-        $request->request->add(["who_is_it_for" => json_encode(explode(",",$request->who_is_it_for))]);
+        
         $course = Course::create($request->all());
         // "course" => CourseGResource::make($course)
         return response()->json(["message" => 200]);
@@ -174,8 +172,8 @@ class CourseGController extends Controller
             $request->request->add(["imagen" => $path]);
         }
         $request->request->add(["slug" => Str::slug($request->title)]);
-        $request->request->add(["requirements" => json_encode(explode(",",$request->requirements))]);
-        $request->request->add(["who_is_it_for" => json_encode(explode(",",$request->who_is_it_for))]);
+       // $request->request->add(["requirements" => json_encode(explode(",",$request->requirements))]);
+        //$request->request->add(["who_is_it_for" => json_encode(explode(",",$request->who_is_it_for))]);
         $course->update($request->all());
 
 

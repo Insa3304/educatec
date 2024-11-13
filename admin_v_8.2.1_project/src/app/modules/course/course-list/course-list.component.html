@@ -1,4 +1,4 @@
-<!--<span class="spinner-border spinner-border-sm align-middle ms-2" *ngIf="isLoading | async"></span>-->
+<span class="spinner-border spinner-border-sm align-middle ms-2" *ngIf="isLoading | async"></span>
 <!--begin::Card-->
 <div class="card">
     <!--begin::Card header-->
@@ -71,9 +71,8 @@
                     <th class="min-w-125px">Imagen</th>
                     <th class="min-w-125px">Titulo</th>
                     <th class="min-w-125px">Categoria</th>
-                   
                     <th class="min-w-125px">Precio</th>
-                
+                   
                     <th class="min-w-125px">Status</th>
                     <th class="text-end min-w-100px">Actions</th>
                 </tr>
@@ -106,12 +105,16 @@
                         </td>
 
 
+                       
+
+
                         <td>
                             <a href="#" onclick="return false;" class="text-gray-800 text-hover-primary mb-1">{{ COURSE.precio_pen }} PEN</a>
                         </td>
 
 
-                    
+
+
                         <td>
                             <div class="badge badge-light-warning fw-bolder" *ngIf="COURSE.state == 1">CURSO DE PRUEBA</div>
                             <div class="badge badge-light-success fw-bolder" *ngIf="COURSE.state == 2">PUBLICO</div>

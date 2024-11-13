@@ -45,12 +45,14 @@ export class CourseEditComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
+    
     this.isLoading = this.courseService.isLoading$;
     this.courseService.lisConfig().subscribe((resp: any) => {
       this.subcategories = resp.subcategories;
       this.categories = resp.categories;
       this.instructores = resp.instructores;
       this.showCourse(this.courses_id);
+      
     });
 
     this.activedRoute.params.subscribe((resp: any) => {
@@ -58,12 +60,13 @@ export class CourseEditComponent implements OnInit {
     });
   }
 
-  showCourse(course_id: string) {
+   showCourse(course_id: string) {
     this.courseService.showCourse(course_id).subscribe((resp: any) => {
       this.course_selected = resp.course;
       this.title = this.course_selected.title;
       this.subtitle = this.course_selected.subtitle;
       this.precio_pen = this.course_selected.precio_pen;
+      
       this.categorie_id = this.course_selected.categorie_id;
       this.selectCategorie({ target: { value: this.categorie_id } });
       this.sub_categorie_id = this.course_selected.sub_categorie_id;
@@ -77,6 +80,8 @@ export class CourseEditComponent implements OnInit {
       }
     });
   }
+    
+    
 
   selectCategorie(event: any) {
     let VALUE = event.target.value;
