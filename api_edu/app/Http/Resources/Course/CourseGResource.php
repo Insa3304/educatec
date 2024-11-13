@@ -17,6 +17,7 @@ class CourseGResource extends JsonResource
      */
     public function toArray($request)
     {
+        
         return [
             "id" => $this->resource->id,
             "title" => $this->resource->title,
@@ -24,6 +25,7 @@ class CourseGResource extends JsonResource
             "slug" => $this->resource->slug,
             "imagen" => env("APP_URL")."storage/".$this->resource->imagen,
             "categorie_id" => $this->resource->categorie_id,
+            
             "categorie" => [
                 "id" => $this->resource->categorie->id,
                 "name" => $this->resource->categorie->name
@@ -33,7 +35,7 @@ class CourseGResource extends JsonResource
                 "id" => $this->resource->sub_categorie->id,
                 "name" => $this->resource->sub_categorie->name
             ],
-            //"precio_usd" => $this->resource->precio_usd,
+            
             "precio_pen" => $this->resource->precio_pen,
             "user_id" => $this->resource->user_id,
             "user" => [
@@ -41,13 +43,10 @@ class CourseGResource extends JsonResource
                 "full_name" => $this->resource->instructor->name.' '.$this->resource->instructor->surname,
                 "email" => $this->resource->instructor->email,
             ],
-            //"level" => $this->resource->level,
-            //"idioma" => $this->resource->idioma,
+          
             "vimeo_id" => $this->resource->vimeo_id,//
             "time" => $this->resource->time,
             "description" => $this->resource->description,
-            "requirements" => json_decode($this->resource->requirements),
-            "who_is_it_for" => json_decode($this->resource->who_is_it_for),
             "state" => $this->resource->state,
         ];
     }

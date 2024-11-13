@@ -20,18 +20,17 @@ class Course extends Model
         "subtitle",
         "slug",
         "imagen",
-        //"precio_usd",
+        
         "precio_pen",
         "categorie_id",
         "sub_categorie_id",
         "user_id",
-        "level",
+        
         "idioma",
         "vimeo_id",
         "time",
         "description",
-        "requirements",
-        "who_is_it_for",
+
         "state",
     ];
 
