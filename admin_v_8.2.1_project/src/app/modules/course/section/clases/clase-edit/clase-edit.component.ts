@@ -30,7 +30,7 @@ export class ClaseEditComponent implements OnInit {
   constructor(
     public courseService: CourseService,
     public modal: NgbActiveModal,
-    private toastr: ToastrService, // Reemplazado por ToastrService
+    private toastr: ToastrService, 
     public sanitizer: DomSanitizer,
     public modalService: NgbModal,
   ) { }

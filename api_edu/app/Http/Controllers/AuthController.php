@@ -41,6 +41,7 @@ class AuthController extends Controller
  
         $user = new User;
         $user->name = request()->name;
+        $user->surname= request()->surname;
         $user->email = request()->email;
         $user->password = bcrypt(request()->password);
         $user->save();
@@ -59,9 +60,9 @@ class AuthController extends Controller
         $credentials = request(['email', 'password']);
  
         if (! $token = auth('api')->attempt(["email" => $request->email,"password" => $request->password,"type_user" =>2, "state" => 1 ])) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['error' => 'Unauthorized'], 401); 
         }
- 
+        
         return $this->respondWithToken($token);
     }
     public function login_tienda(Request $request)
