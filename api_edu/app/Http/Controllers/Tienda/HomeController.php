@@ -61,7 +61,7 @@ class HomeController extends Controller
         if(!$course){
             return abort(404);
         }
-        return response ()->json(["course"=> CourseHomeResource::make($course)]);
+        return response ()->json(["course"=> LandingCourseResource::make($course)]);
 
     }
 }
