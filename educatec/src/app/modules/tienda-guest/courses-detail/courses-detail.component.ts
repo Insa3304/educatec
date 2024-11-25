@@ -1,9 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { TiendaGuestService } from '../service/tienda-guest.service';
+import { CartService } from '../service/cart.service';
 
 
 declare function courseView():any;
+declare function showMoreBtn():any;
+declare function magnigyPopup():any;
+declare function alertDanger([]):any;
+declare function alertWarning([]):any;
+declare function alertSuccess([]):any;
+
 
 @Component({
   selector: 'app-courses-detail',
@@ -13,9 +20,13 @@ declare function courseView():any;
 export class CoursesDetailComponent implements OnInit{
  SLUG:any = null;
  LANDING_COURSE: any=null;
+ user: any =null;
+
   constructor(
     public activeRouter: ActivatedRoute,
     public tiendaGuestService: TiendaGuestService,
+    public cartService: CartService,
+    public router:Router,
   ) {
    
   }
@@ -31,8 +42,39 @@ export class CoursesDetailComponent implements OnInit{
       this.LANDING_COURSE=resp.course;
     })
   setTimeout(()=>{
-    courseView()
+    courseView();
+    showMoreBtn();
   },50);
- 
-    }
+
+   this.user= this.cartService.authService.user;
+  
   }
+  getTotalPrice(COURSE:any){
+    return COURSE.precio_pen;
+
+  }
+  addCart(){
+    if(!this.user){
+      alertWarning("NECESITAS REGISTRARTE EN LA TIENDA");
+      this.router.navigateByUrl("auth/login");
+      return;
+    }
+    let data ={
+       //user_id:this.LANDING_COURSE,
+        course_id: this.LANDING_COURSE.id,
+        total: this.getTotalPrice(this.LANDING_COURSE) ,
+    };
+
+    this.cartService.registerCart(data).subscribe((resp:any)=>{
+      if(resp.message ==403){
+          alertDanger(resp.message_text);
+        return;
+      }else{
+        this.cartService.addCart(resp.cart);
+        alertSuccess("CURSO AGREGADO CORRECTAMENTE");
+      }
+    })
+  
+}
+}
+

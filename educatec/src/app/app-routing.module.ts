@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './modules/auth/service/auth.guard';
 
 export const routes: Routes =[
 
@@ -14,6 +15,13 @@ export const routes: Routes =[
     path: '',
     loadChildren: () => import ("./modules/tienda-guest/tienda-guest.module").then(m => m.TiendaGuestModule),
   },
+
+  {
+    path: '',
+    canActivate: [AuthGuard],
+    loadChildren: () => import ("./modules/tienda-auth/tienda-auth.module").then(m => m.TiendaAuthModule),
+  },
+
   {
     path: 'auth',
     loadChildren: () => import ("./modules/auth/auth.module").then(m => m.AuthModule),

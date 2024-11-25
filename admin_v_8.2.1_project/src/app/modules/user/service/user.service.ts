@@ -24,7 +24,7 @@ export class UserService {
     
     this.isLoadingSubject.next(true);
 
-    let headers = new HttpHeaders({'Autorization': 'Bearer' + this.authservice.token});
+    let headers = new HttpHeaders({'Authorization': 'Bearer ' + this.authservice.token});
     let LINK = "?T=";
     if(search){
       LINK +="&search="+search;
@@ -45,7 +45,7 @@ export class UserService {
 
     this.isLoadingSubject.next(true);
 
-    let headers = new HttpHeaders({'Autorization': 'Bearer' + this.authservice.token});
+    let headers = new HttpHeaders({'Authorization': 'Bearer ' + this.authservice.token});
 
     let URL = URL_SERVICIOS + "/users";
 
@@ -56,7 +56,7 @@ export class UserService {
 
     this.isLoadingSubject.next(true);
 
-    let headers = new HttpHeaders({'Autorization': 'Bearer' + this.authservice.token});
+    let headers = new HttpHeaders({'Authorization': 'Bearer ' + this.authservice.token});
 
     let URL = URL_SERVICIOS + "/users/"+user_id;
 
@@ -68,10 +68,11 @@ export class UserService {
 {
   this.isLoadingSubject.next(true);
 
-    let headers = new HttpHeaders({'Autorization': 'Bearer' + this.authservice.token});
+    let headers = new HttpHeaders({'Authorization': 'Bearer ' + this.authservice.token});
 
     let URL = URL_SERVICIOS + "/users/"+user_id;
 
-    return this.http.delete(URL,{headers: headers}).pipe
-    (finalize(() => this.isLoadingSubject.next(false)));
+    return this.http.delete(URL,{headers: headers}).pipe(
+    finalize(() => this.isLoadingSubject.next(false))
+    );
 }}

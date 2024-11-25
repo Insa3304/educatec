@@ -75,6 +75,7 @@ export class UserEditComponent {
       
     
     let formData = new FormData();
+      
       formData.append("name", this.name);
       formData.append("surname", this.surname);
       formData.append("email", this.email);

@@ -54,7 +54,7 @@ class UserController extends Controller
             $request->request-> add(["avatar" => $path]);
         }
         if($request->password){
-            $request->request->add(["password "=>bcrypt($request->password)]);
+            $request->request->add(["password"=>bcrypt($request->password)]);
 
         }
         $user = User::create($request-> all()); //almacena la informacion enviada desde el frontend en base a los fillable del modelo user
@@ -98,11 +98,11 @@ class UserController extends Controller
             if($user->avatar){
                 Storage::delete($user->avatar);
             }
-            $path = Storage::putFile("users"->file("imagen"));
+            $path = Storage::putFile("users",$request->file("imagen"));
             $request->request-> add(["avatar" => $path]);
         }
         if($request->password){
-            $request->request->add(["password "=>bcrypt($request->password)]);
+            $request->request->add(["password"=> bcrypt($request->password)]);
 
         }
         

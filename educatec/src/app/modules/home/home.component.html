@@ -50,27 +50,27 @@
                                                <img [src]="COURSE.imagen" alt="Card image">
                                                <div class="rbt-badge-3 bg-white">
                                                   
-                                                
                                                </div>
                                            </a>
                                        </div>
                                        <div class="rbt-card-body">
                                            <ul class="rbt-meta">
                                                <li><i class="feather-book"></i>{{COURSE.count_class}}</li>
-                                               <li><i class="feather-users"></i>50 Students</li>
+                                               
                                            </ul>
-                                           <h4 class="rbt-card-title"> <a></a>
+                                           <h4 class="rbt-card-title">{{COURSE.title}}<a></a>
                                            </h4>
-                                           <p class="rbt-card-text">It is a long established fact that a reader
-                                               will be distracted.</p>
+                                           <p class="rbt-card-text">{{COURSE.subtitle}}</p>
                                            
                                            <div class="rbt-card-bottom">
                                                <div class="rbt-price">
                                                    <span class="current-price">S/.{{COURSE.precio_pen}}</span>
                                                    
                                                </div>
-                                               <a class="rbt-btn-link" href="['landing-curso/',COURSE.slug]">Learn More<i
-                                                       class="feather-arrow-right"></i></a>
+                                              
+                                               <a class="rbt-btn-link" href="#"  
+                                               onclick="return false" (click)="addCart(COURSE)">
+                                               <i class="feather-shopping-cart"></i> Añadir al carrito</a>
                                            </div>
                                        </div>
                                    </div>
@@ -375,7 +375,7 @@
                             </h4>
                             <ul class="rbt-meta">
                                 <li><i class="feather-book"></i>{{COURSE.count_class}}</li>
-                                <li><i class="feather-users"></i>50 Students</li>
+                                <!--<li><i class="feather-users"></i>50 Students</li>-->
                                 <li><i class="feather-play"></i>{{COURSE.time_course}}</li>
                             </ul>
                             <p class="rbt-card-text">{{COURSE.subtitle}}</p>
@@ -391,10 +391,12 @@
                             </div>
                             <div class="rbt-card-bottom">
                                 <div class="rbt-price">
-                                    <span class="current-price">{{COURSE.precio_pen}}</span>
+                                    <span class="current-price">S/.{{COURSE.precio_pen}}</span>
                                     
                                 </div>
-                                <a class="rbt-btn-link left-icon" href="course-details.html"><i class="feather-shopping-cart"></i> Añadir al carrito</a>
+                                <a class="rbt-btn-link" href="#"  
+                                onclick="return false" (click)="addCart(COURSE)">
+                                <i class="feather-shopping-cart"></i> Añadir al carrito</a>
                             </div>
                         </div>
                     </div>
@@ -524,9 +526,11 @@
       
                               <div class="rbt-card-bottom">
                                 <div class="rbt-price">
-                                  <span class="current-price">{{ courses.precio_pen }}</span>
+                                  <span class="current-price">S/.{{ courses.precio_pen }}</span>
                                 </div>
-                                <a class="rbt-btn-link" href="course-details.html">Learn More<i class="feather-arrow-right"></i></a>
+                                <a class="rbt-btn-link" href="#"  
+                                               onclick="return false" (click)="addCart(courses)">
+                                               <i class="feather-shopping-cart"></i> Añadir al carrito</a>
                               </div>
                             </div>
                           </div>

@@ -1,14 +1,20 @@
 <?php
 
+
 namespace App\Http\Controllers\Tienda;
 
-use App\Models\Sale\Cart;
-use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
-use App\Http\Resources\Ecommerce\Cart\CartResource;
-use App\Http\Resources\Ecommerce\Cart\CartCollection;
 
-class CartController extends Controller
+use App\Mail\SaleMail;
+use App\Models\Sale\Cart;
+use App\Models\Sale\Sale;
+use Illuminate\Http\Request;
+use App\Models\CoursesStudent;
+use App\Models\Sale\SaleDetail;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
+
+
+class CheckoutController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,18 +23,9 @@ class CartController extends Controller
      */
     public function index()
     {
-        $user = auth('api')->user();
-
-
-        $carts = Cart::where("user_id",$user->id)->get();
-
-
-        return response()->json(["carts" => CartCollection::make($carts)]);
+        //
     }
 
-
-
-    
 
     /**
      * Show the form for creating a new resource.
@@ -40,6 +37,7 @@ class CartController extends Controller
         //
     }
 
+
     /**
      * Store a newly created resource in storage.
      *
@@ -47,17 +45,35 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $user = auth('api')->user();
-        $is_exist_cart = Cart::where("user_id",$user->id)->where("course_id",$request->course_id)->first();
-        if($is_exist_cart){
-            return response()->json(["message"=> 403, "message_text" =>"Ya haz agregado el curso al carrito"]);
-        }
-        $request->request->add(["user_id" =>$user->id]);
-        $cart = Cart::create($request->all());
+    {  
+        $request->request->add(["user_id" => auth("api")->user()->id]);
+        $sale = Sale::create($request->all());
 
-        return response()->json(["cart"=>CartResource::make($cart)]);
+
+        $carts = Cart::where("user_id",auth('api')->user()->id)->get();
+
+
+        foreach ($carts as $key => $cart) {
+            // $cart->delete();
+            $new_detail = [];
+            $new_detail = $cart->toArray();
+            $new_detail["sale_id"] = $sale->id;
+            
+            SaleDetail::create($new_detail);
+            CoursesStudent::create([
+                "course_id" =>$new_detail["course_id"],
+                "user_id" => auth('api')->user()->id,
+            ]);
+        }  
+
+
+        //  CODIGO PARA EL ENVIO DE CORREO
+        //Mail::to($sale->user->email)->send(new SaleMail($sale));
+        return response()->json(["message" => 200, "message_text" => "LOS CURSOS SE HAN ADQUIRIDO CORRECTAMENTE"]);
+
+
     }
+
 
     /**
      * Display the specified resource.
@@ -70,6 +86,7 @@ class CartController extends Controller
         //
     }
 
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -80,6 +97,7 @@ class CartController extends Controller
     {
         //
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -93,6 +111,7 @@ class CartController extends Controller
         //
     }
 
+
     /**
      * Remove the specified resource from storage.
      *
@@ -101,13 +120,10 @@ class CartController extends Controller
      */
     public function destroy($id)
     {
-        $cart = Cart::findOrFail($id);
-        $cart->delete();
-
-
-        return response()->json(["message" => 200]);
-
-
-
+        //
     }
 }
+
+
+
+

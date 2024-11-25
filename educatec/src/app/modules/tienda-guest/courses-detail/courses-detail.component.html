@@ -208,18 +208,15 @@
                         <div class="content-item-content">
                             <div class="rbt-price-wrapper d-flex flex-wrap align-items-center justify-content-between">
                                 <div class="rbt-price">
-                                    <span class="current-price">$60.99</span>
-                                    <span class="off-price">$84.99</span>
+                                    <span class="current-price">S/.{{LANDING_COURSE.precio_pen}}</span>
+                                   
                                 </div>
-                                <div class="discount-time">
-                                    <span class="rbt-badge color-danger bg-color-danger-opacity"><i
-                                            class="feather-clock"></i> 3 days left!</span>
-                                </div>
+                               
                             </div>
 
                             <div class="add-to-card-button mt--15">
-                                <a class="rbt-btn btn-gradient icon-hover w-100 d-block text-center" href="#">
-                                    <span class="btn-text">Add to Cart</span>
+                                <a class="rbt-btn btn-gradient icon-hover w-100 d-block text-center" href="#" onclick="return false;" (click)="addCart()"> 
+                                    <span class="btn-text">Agregar al carrito</span>
                                     <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                                 </a>
                             </div>
