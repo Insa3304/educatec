@@ -68,7 +68,7 @@ class CheckoutController extends Controller
 
 
         //  CODIGO PARA EL ENVIO DE CORREO
-        //Mail::to($sale->user->email)->send(new SaleMail($sale));
+        Mail::to($sale->user->email)->send(new SaleMail($sale));
         return response()->json(["message" => 200, "message_text" => "LOS CURSOS SE HAN ADQUIRIDO CORRECTAMENTE"]);
 
 

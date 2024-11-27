@@ -9,6 +9,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { ProfileClientComponent } from './profile-client/profile-client.component';
 
 
 
@@ -16,7 +17,8 @@ import { SharedModule } from 'src/app/shared/shared.module';
 @NgModule({
   declarations: [
     TiendaAuthComponent,
-    ListCartsComponent
+    ListCartsComponent,
+    ProfileClientComponent
   ],
   imports: [
     CommonModule,

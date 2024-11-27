@@ -10,6 +10,7 @@
         "guzzlehttp/guzzle": "^7.0.1",
         "laravel/framework": "^8.54",
         "laravel/tinker": "^2.5",
+        "mercadopago/dx-php": "^2.0",
         "owen-oj/laravel-getid3": "^2.3",
         "tymon/jwt-auth": "^1.0@dev",
         "vimeo/laravel": "^5.9"

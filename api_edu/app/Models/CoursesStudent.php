@@ -17,7 +17,8 @@ class CoursesStudent extends Model
     protected $fillable = [
         "course_id",
         "user_id",
-        "clases_checkeds"
+        "clases_checkeds",
+        "state", //1 activo y 2 terminado
     ];
 
 

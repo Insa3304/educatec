@@ -10,6 +10,7 @@ use App\Http\Controllers\Tienda\HomeController;
 use App\Http\Controllers\Tienda\CheckoutController;
 use App\Http\Controllers\Admin\Course\ClaseGController;
 use App\Http\Controllers\Admin\Course\CourseGController;
+use App\Http\Controllers\Tienda\ProfileClientController;
 use App\Http\Controllers\Admin\Course\SeccionGController;
 use App\Http\Controllers\Admin\Course\CategorieController;
 
@@ -67,16 +68,20 @@ Route::group([
     Route::delete('/course-clases-file/{id}',[ClaseGController::class, "removeFiles"]);
     Route::post('/course-clases/upload_video/{id}',[ClaseGController::class, "upload_video"]);
 
-    Route::group(["prefix" => "ecommerce"],function($router){
-        Route::get("home",[HomeController::class,"home"]);
-        Route::get("course-detail/{slug}",[HomeController::class,"course_detail"]);
-        Route::resource('/cart',CartController::class);
-        Route::post('/checkout',[CheckoutController::Class,"store"]);
-    });
+});
 
-    
-    
-    
+Route::group(["prefix" => "ecommerce"],function($router){
+    Route::get("home",[HomeController::class,"home"]);
+    Route::get("course-detail/{slug}",[HomeController::class,"course_detail"]);
+
+    Route::group([
+        'middleware' => 'api',
+    ], function ($router) {
+
+Route::resource('/cart',CartController::class);
+Route::post('/checkout',[CheckoutController::Class,"store"]);
+Route::post('/profile',[ProfileClientController::Class,"profile"]);
+});
     
 });
 
