@@ -63,6 +63,13 @@ class LandingCourseResource extends JsonResource
                             "id" => $clase->id,
                             "name" => $clase->name,
                             "time_clase" => $clase->time_clase,
+                           "vimeo"=>$clase->vimeo_id ? "https://player.vimeo.com/video/".$this->resource->vimeo_id : NULL,
+                           "files" => $clase->files->map(function($file){
+                                return[
+                                    "name" => $file->name_file,
+                                    "url" => env("APP_URL")."storage/".$file->file,
+                                ];
+                           })
                         ];
                     })
                 ];

@@ -77,11 +77,11 @@ Route::group(["prefix" => "ecommerce"],function($router){
     Route::group([
         'middleware' => 'api',
     ], function ($router) {
-
-Route::resource('/cart',CartController::class);
-Route::post('/checkout',[CheckoutController::Class,"store"]);
-Route::post('/profile',[ProfileClientController::Class,"profile"]);
-});
+        Route::get("course_leason/{slug}",[HomeController::class,"course_leason"]);
+    Route::resource('/cart',CartController::class);
+    Route::post('/checkout',[CheckoutController::Class,"store"]);
+    Route::post('/profile',[ProfileClientController::Class,"profile"]);
+    });
     
 });
 

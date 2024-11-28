@@ -22,8 +22,10 @@ export class CoursesDetailComponent implements OnInit{
  LANDING_COURSE: any=null;
  user: any =null;
 
+ is_have_course:any = null
+
   constructor(
-    public activeRouter: ActivatedRoute,
+    public activedRouter: ActivatedRoute,
     public tiendaGuestService: TiendaGuestService,
     public cartService: CartService,
     public router:Router,
@@ -33,21 +35,28 @@ export class CoursesDetailComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.activeRouter.params.subscribe((resp:any)=>{
+    this.activedRouter.params.subscribe((resp:any)=>{
       console.log(resp);
       this.SLUG = resp.slug;
     })
     this.tiendaGuestService.landingCourse(this.SLUG).subscribe((resp:any)=>{
       console.log(resp);
       this.LANDING_COURSE=resp.course;
+      
+      
+      this.is_have_course = resp.is_have_course;
     })
+
+    
+    
+
   setTimeout(()=>{
     courseView();
     showMoreBtn();
   },50);
 
    this.user= this.cartService.authService.user;
-  
+   
   }
   getTotalPrice(COURSE:any){
     return COURSE.precio_pen;

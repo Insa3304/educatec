@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Tienda;
 
 use App\Models\Sale\Cart;
 use Illuminate\Http\Request;
+use App\Models\CoursesStudent;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Ecommerce\Cart\CartResource;
 use App\Http\Resources\Ecommerce\Cart\CartCollection;
@@ -48,11 +49,20 @@ class CartController extends Controller
      */
     public function store(Request $request)
     {
+        //si el curso ya pertenece al estudiante
         $user = auth('api')->user();
+        $is_have_course = CoursesStudent::where("user_id",$user->id)->where("course_id",$request->course_id)->first();
+        if($is_have_course){
+            return response()->json(["message"=> 403, "message_text" =>"Ya haz adquirido el curso"]);
+        }
+        //si el curso existe en el carrito
         $is_exist_cart = Cart::where("user_id",$user->id)->where("course_id",$request->course_id)->first();
         if($is_exist_cart){
             return response()->json(["message"=> 403, "message_text" =>"Ya haz agregado el curso al carrito"]);
         }
+
+       
+
         $request->request->add(["user_id" =>$user->id]);
         $cart = Cart::create($request->all());
 
