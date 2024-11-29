@@ -214,19 +214,32 @@
                                
                             </div>
 
-                            <div class="add-to-card-button mt--15">
-                                <a class="rbt-btn btn-gradient icon-hover w-100 d-block text-center" href="#" onclick="return false;" (click)="addCart()"> 
-                                    <span class="btn-text">Agregar al carrito</span>
-                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                </a>
-                            </div>
+                            <ng-container *ngIf="!is_have_course">
 
-                            <div class="buy-now-btn mt--15">
-                                <a class="rbt-btn btn-border icon-hover w-100 d-block text-center" href="#">
-                                    <span class="btn-text">Buy Now</span>
-                                    <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                </a>
-                            </div>
+                                <div class="add-to-card-button mt--15">
+                                    <a class="rbt-btn btn-gradient icon-hover w-100 d-block text-center" href="#" onclick="return false;" (click)="addCart()"> 
+                                        <span class="btn-text">Agregar al carrito</span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    </a>
+                                </div>
+    
+                                <div class="buy-now-btn mt--15">
+                                    <a class="rbt-btn btn-border icon-hover w-100 d-block text-center" href="#">
+                                        <span class="btn-text">Buy Now</span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    </a>
+                                </div>
+
+                            </ng-container>
+
+                            <ng-container *ngIf="is_have_course">
+                                <div class="add-to-card-button mt--15">
+                                    <a class="rbt-btn btn-gradient icon-hover w-100 d-block text-center" [href]="'/mi-curso/'+SLUG" target="_blank"> 
+                                        <span class="btn-text">Ir al curso</span>
+                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                    </a>
+                                </div>
+                            </ng-container>
 
                             <span class="subtitle"><i class="feather-rotate-ccw"></i> 30-Day Money-Back
                                 Guarantee</span>

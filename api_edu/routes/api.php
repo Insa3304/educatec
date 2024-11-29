@@ -87,6 +87,12 @@ Route::get('/pago/success', [MercadoPagoController::class, 'success'])->name('pa
 
 });
 
+        Route::get("course_leason/{slug}",[HomeController::class,"course_leason"]);
+    Route::resource('/cart',CartController::class);
+    Route::post('/checkout',[CheckoutController::Class,"store"]);
+    Route::post('/profile',[ProfileClientController::Class,"profile"]);
+    });
+
 });
 
 
