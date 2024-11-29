@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../service/course.service';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-course-add',
   templateUrl: './course-add.component.html',
@@ -51,8 +52,8 @@ export class CourseAddComponent implements OnInit {
   }
 
   save() {
-    if (!this.title || !this.subtitle || !this.precio_pen || !this.categorie_id || !this.sub_categorie_id) {
-      this.toastr.error("Necesitas llenar todos los campos del formulario", "Validación");
+    if (!this.title || !this.subtitle || !this.precio_pen || !this.categorie_id || !this.sub_categorie_id || !this.description) {
+      this.toastr.error("Necesitas llenar todos los campos del formulario", "Atención");
       return;
     }
 

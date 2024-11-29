@@ -45,7 +45,7 @@
                     </div>
 
                     <ul class="rbt-meta">
-                        <li><i class="feather-calendar"></i>Ultima actualización{{LANDING_COURSE.update_at}}</li>
+                       
                        
                         <li><i class="feather-award"></i>Curso Certificado</li>
                     </ul>
@@ -82,7 +82,7 @@
                     <div class="course-content rbt-shadow-box coursecontent-wrapper mt--30" id="coursecontent">
                         <div class="rbt-course-feature-inner">
                             <div class="section-title">
-                                <h4 class="rbt-title-style-3">Course Content</h4>
+                                <h4 class="rbt-title-style-3">Contenido del Curso</h4>
                             </div>
                             <div class="rbt-accordion-style rbt-accordion-02 accordion">
                                 <div class="accordion" id="accordionExampleb2">
@@ -91,7 +91,7 @@
                                     <div class="accordion-item card">
 
                                         <h2 class="accordion-header card-header" id="headingTwo1">
-                                            <button class="accordion-button" [ngClass]="{collapsed: i!=0}" type="button" data-bs-toggle="collapse "    [attr.data-bs-target]="'#collapseTwo'+section.id" aria-expanded="true" [attr.aria-controls]="'#collapseTwo'+section.id">
+                                            <button class="accordion-button" [ngClass]="{collapsed: i!=0}" type="button" data-bs-toggle="collapse"    [attr.data-bs-target]="'#collapseTwo'+section.id" aria-expanded="true" [attr.aria-controls]="'#collapseTwo'+section.id">
                                                 {{section.name}}<span class="rbt-badge-5 ml--10">{{section.time_section}}</span>
                                             </button>
                                         </h2>
@@ -194,13 +194,14 @@
                         <!-- Start Viedo Wrapper  -->
                         <a class="video-popup-with-text video-popup-wrapper text-center popup-video sidebar-video-hidden mb--15" href="https://www.youtube.com/watch?v=nA1Aqp0sPQo">
                             <div class="video-content">
-                                <img class="w-100 rbt-radius" src="assets/images/others/video-01.jpg" alt="Video Images">
-                                <div class="position-to-top">
+                                <!--<img class="w-100 rbt-radius" src="assets/images/others/video-01.jpg" alt="Video Images">-->
+                                <img class="w-100" [src]="LANDING_COURSE.imagen" alt="Card image">
+                                <!--<div class="position-to-top">
                                     <span class="rbt-btn rounded-player-2 with-animation">
                                         <span class="play-icon"></span>
                                     </span>
-                                </div>
-                                <span class="play-view-text d-block color-white"><i class="feather-eye"></i> Preview this course</span>
+                                </div>-->
+                               <!-- <span class="play-view-text d-block color-white"><i class="feather-eye"></i> Viualización de video</span>-->
                             </div>
                         </a>
                         <!-- End Viedo Wrapper  -->
@@ -223,12 +224,7 @@
                                     </a>
                                 </div>
     
-                                <div class="buy-now-btn mt--15">
-                                    <a class="rbt-btn btn-border icon-hover w-100 d-block text-center" href="#">
-                                        <span class="btn-text">Buy Now</span>
-                                        <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                    </a>
-                                </div>
+                               
 
                             </ng-container>
 
@@ -241,52 +237,12 @@
                                 </div>
                             </ng-container>
 
-                            <span class="subtitle"><i class="feather-rotate-ccw"></i> 30-Day Money-Back
-                                Guarantee</span>
+                            
 
 
-                            <div class="rbt-widget-details has-show-more">
-                                <ul class="has-show-more-inner-content rbt-course-details-list-wrapper">
-                                    <li><span>Start Date</span><span class="rbt-feature-value rbt-badge-5">5 Hrs 20 Min</span>
-                                    </li>
-                                    <li><span>Enrolled</span><span class="rbt-feature-value rbt-badge-5">100</span></li>
-                                    <li><span>Lectures</span><span class="rbt-feature-value rbt-badge-5">50</span></li>
-                                    <li><span>Skill Level</span><span class="rbt-feature-value rbt-badge-5">Basic</span></li>
-                                    <li><span>Language</span><span class="rbt-feature-value rbt-badge-5">English</span></li>
-                                    <li><span>Quizzes</span><span class="rbt-feature-value rbt-badge-5">10</span></li>
-                                    <li><span>Certificate</span><span class="rbt-feature-value rbt-badge-5">Yes</span></li>
-                                    <li><span>Pass Percentage</span><span class="rbt-feature-value rbt-badge-5">95%</span></li>
-                                </ul>
-                                <div class="rbt-show-more-btn">Show More</div>
-                            </div>
+                           
 
-                            <div class="social-share-wrapper mt--30 text-center">
-                                <div class="rbt-post-share d-flex align-items-center justify-content-center">
-                                    <ul class="social-icon social-default transparent-with-border justify-content-center">
-                                        <li><a href="https://www.facebook.com/">
-                                                <i class="feather-facebook"></i>
-                                            </a>
-                                        </li>
-                                        <li><a href="https://www.twitter.com">
-                                                <i class="feather-twitter"></i>
-                                            </a>
-                                        </li>
-                                        <li><a href="https://www.instagram.com/">
-                                                <i class="feather-instagram"></i>
-                                            </a>
-                                        </li>
-                                        <li><a href="https://www.linkdin.com/">
-                                                <i class="feather-linkedin"></i>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <hr class="mt--20">
-                                <div class="contact-with-us text-center">
-                                    <p>For details about the course</p>
-                                    <p class="rbt-badge-2 mt--10 justify-content-center w-100"><i class="feather-phone mr--5"></i> Call Us: <a href="#"><strong>+444 555 666 777</strong></a></p>
-                                </div>
-                            </div>
+                           
                         </div>
                     </div>
                 </div>

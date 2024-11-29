@@ -19,18 +19,10 @@
                               Contamos con una gran variedad de cursos que te permitiran desarrollar tus competencias.
                               <strong>Echa un vistazo.</strong>
                           </p>
-                          <div class="slider-btn">
-                              <a class="rbt-btn btn-gradient hover-icon-reverse" href="#">
-                                  <span class="icon-reverse-wrapper">
-                                      <span class="btn-text">Cursos Disponibles</span>
-                                  <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                  <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                  </span>
-                              </a>
-                          </div>
+                          
                       </div>
                       <div class="shape-wrapper" id="scene">
-                          <img src="assets/images/banner/banner-01.png" alt="Hero Image">
+                          <img src="assets/images/imagenes/Educatec.png" alt="Hero Image">
                           <div class="hero-bg-shape-1 layer" data-depth="0.4">
                               <img src="assets/images/shape/shape-01.png" alt="Hero Image Background Shape">
                           </div>
@@ -48,9 +40,7 @@
                                        <div class="rbt-card-img">
                                         <a [routerLink]="['landing-curso/',COURSE.slug]">
                                                <img [src]="COURSE.imagen" alt="Card image">
-                                               <div class="rbt-badge-3 bg-white">
-                                                  
-                                               </div>
+                                               
                                            </a>
                                        </div>
                                        <div class="rbt-card-body">
@@ -410,13 +400,13 @@
           <div class="row">
               <div class="col-lg-12">
                   <div class="load-more-btn mt--60 text-center">
-                      <a class="rbt-btn btn-gradient btn-lg hover-icon-reverse" href="#">
-                          <span class="icon-reverse-wrapper">
-                              <span class="btn-text">Load More Course (40)</span>
+                     <!-- <a class="rbt-btn btn-gradient btn-lg hover-icon-reverse" href="#">
+                            <span class="icon-reverse-wrapper">
+                            <span class="btn-text">Load More Course (40)</span>
                           <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                           <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                           </span>
-                      </a>
+                      </a>-->
                   </div>
               </div>
           </div>
@@ -458,7 +448,7 @@
             <div class="col-lg-12">
               <div class="section-title text-center">
                 <span class="subtitle bg-primary-opacity">Cursos</span>
-                <h2 class="title">Histudy All Courses</h2>
+                <h2 class="title">Categorias disponibles</h2>
               </div>
             </div>
           </div>
@@ -504,7 +494,7 @@
                         <div class="col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
                           <div class="rbt-card variation-01 rbt-hover">
                             <div class="rbt-card-img">
-                              <a href="course-details.html">
+                                <a [routerLink]="['landing-curso/',courses.slug]">
                                 <img [src]="courses.imagen" alt="Card image">
                               </a>
                             </div>
@@ -516,11 +506,11 @@
                                 </div>
                               </div>
                               <h4 class="rbt-card-title">
-                                <a href="course-details.html">{{ courses.title }}</a>
+                                <a [routerLink]="['landing-curso/',courses.slug]">{{ courses.title }}</a>
                               </h4>
                               <ul class="rbt-meta">
                                 <li><i class="feather-book"></i>{{ courses.count_class }}</li>
-                                <li><i class="feather-users"></i>40 Students</li>
+                                
                                 <li><i class="feather-play"></i>{{ courses.time_course }}</li>
                               </ul>
       

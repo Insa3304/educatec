@@ -62,6 +62,7 @@ export class CoursesDetailComponent implements OnInit{
     return COURSE.precio_pen;
 
   }
+ 
   addCart(){
     if(!this.user){
       alertWarning("NECESITAS REGISTRARTE EN LA TIENDA");

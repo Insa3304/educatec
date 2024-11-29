@@ -4,6 +4,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Tienda\CartController;
 use App\Http\Controllers\Tienda\HomeController;
@@ -81,6 +82,7 @@ Route::group(["prefix" => "ecommerce"],function($router){
     Route::resource('/cart',CartController::class);
     Route::post('/checkout',[CheckoutController::Class,"store"]);
     Route::post('/profile',[ProfileClientController::Class,"profile"]);
+    //Route::post('/create-payment', [PaymentController::class, 'createPayment']);
     });
     
 });
