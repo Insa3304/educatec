@@ -13,7 +13,7 @@ use App\Http\Controllers\Admin\Course\CourseGController;
 use App\Http\Controllers\Tienda\ProfileClientController;
 use App\Http\Controllers\Admin\Course\SeccionGController;
 use App\Http\Controllers\Admin\Course\CategorieController;
-
+use App\Http\Controllers\Tienda\MercadoPagoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,10 +79,14 @@ Route::group(["prefix" => "ecommerce"],function($router){
     ], function ($router) {
 
 Route::resource('/cart',CartController::class);
-Route::post('/checkout',[CheckoutController::Class,"store"]);
-Route::post('/profile',[ProfileClientController::Class,"profile"]);
+Route::post('/checkout',[CheckoutController::class,"store"]);
+Route::post('/profile',[ProfileClientController::class,"profile"]);
+Route::post('/create-preference', [MercadoPagoController::class, 'createPreference']);
+Route::post('/process-payment', [MercadoPagoController::class, 'processPayment']);
+Route::get('/pago/success', [MercadoPagoController::class, 'success'])->name('pago.success');
+
 });
-    
+
 });
 
 

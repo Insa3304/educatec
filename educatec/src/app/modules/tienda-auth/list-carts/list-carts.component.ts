@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { CartService } from '../../tienda-guest/service/cart.service';
+import { TiendaAuthService } from '../service/tienda-auth.service';
 
 
 declare function alertSuccess([]):any;
@@ -15,12 +16,15 @@ export class ListCartsComponent implements OnInit{
 
   listCarts:any = [];
   totalSum:number = 0;
+  curso= []=[];
+
   code:any = null;
   @ViewChild('paypal',{static: true}) paypalElement?: ElementRef; // referencia al div paypal
   constructor(
-    public cartService: CartService
+    public cartService: CartService,
+    public mercadoPagoService: TiendaAuthService
   ) {
-   
+
   }
   ngOnInit(): void {
     this.cartService.currentData$.subscribe((resp:any) => {
@@ -28,7 +32,7 @@ export class ListCartsComponent implements OnInit{
       this.listCarts = resp;
       this.totalSum = this.listCarts.reduce((sum:number, item:any) => sum + item.total,0);
     })
-    
+    this.initMercadoPago();
     paypal.Buttons({
       // optional styling for buttons
       // https://developer.paypal.com/docs/checkout/standard/customize/buttons-style-guide/
@@ -69,12 +73,12 @@ export class ListCartsComponent implements OnInit{
 
       // finalize the transaction
       onApprove: async (data:any, actions:any) => {
-         
+
           let Order = await actions.order.capture();
- 
+
           // Order.purchase_units[0].payments.captures[0].id
           let dataT = {
-            
+
             method_payment: "PAYPAL",
             currency_total: "USD",//"1000 PEN"
             currency_payment: "USD",
@@ -98,7 +102,42 @@ export class ListCartsComponent implements OnInit{
 
   }
 
-  
+  initMercadoPago(){
+    const mp = new MercadoPago("APP_USR-c4025ed5-b94f-4785-a64e-68d32e21e492");
+    const bricksBuilder = mp.bricks();
+    const idUsuario =1;
+    // Crear la preferencia de MercadoPago
+    this.mercadoPagoService.createPreference(idUsuario).subscribe({
+      next: (response: any) => {
+        const preference_id = response.id; // Asegúrate de que el backend devuelva este dato.
+        // Crear el widget Wallet usando el preference_id
+        bricksBuilder.create("wallet", "wallet_container", {
+          initialization: {
+            preferenceId: preference_id,
+          },
+          customization: {
+            paymentMethods: {
+              ticket: "all",
+              creditCard: "all",
+              debitCard: "all",
+              mercadoPago: "all",
+            },
+            texts: {
+              valueProp: 'smart_option',
+             },
+
+          },
+        }).catch((error: any) => {
+          console.error("Error al inicializar Wallet:", error);
+        });
+      },
+      error: (error: any) => {
+        console.error("Error al crear preferencia de MercadoPago:", error);
+      },
+    });
+  }
+
+
 
   removeItem(cart:any){
     this.cartService.deleteCart(cart.id).subscribe((resp:any) => {

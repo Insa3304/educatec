@@ -1,0 +1,2 @@
+export interface MercadoPago {
+}

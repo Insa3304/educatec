@@ -10,6 +10,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProfileClientComponent } from './profile-client/profile-client.component';
+import { PaymentComponent } from './payment/payment.component';
 
 
 
@@ -18,7 +19,8 @@ import { ProfileClientComponent } from './profile-client/profile-client.componen
   declarations: [
     TiendaAuthComponent,
     ListCartsComponent,
-    ProfileClientComponent
+    ProfileClientComponent,
+    PaymentComponent
   ],
   imports: [
     CommonModule,
