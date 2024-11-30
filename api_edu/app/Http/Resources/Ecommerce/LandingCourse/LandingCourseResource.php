@@ -37,7 +37,7 @@ class LandingCourseResource extends JsonResource
             "time" => $this->resource->time,
             "imagen" => env("APP_URL")."storage/".$this->resource->imagen,
             
-            "precio_pen" => $this->resource->precio_pen,
+            "precio" => $this->resource->precio,
             "count_class" => $this->resource->count_class,
             "time_course" => $this->resource->time_course,
             "files_count" => $this->resource->files_count,

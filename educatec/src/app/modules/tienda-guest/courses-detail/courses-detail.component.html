@@ -12,10 +12,7 @@
             <div class="col-lg-8">
                 <div class="content text-start">
                     <ul class="page-list">
-                        <li class="rbt-breadcrumb-item"><a href="index.html">Inicio</a></li>
-                        <li>
-                            <div class="icon-right"><i class="feather-chevron-right"></i></div>
-                        </li>
+                       
                         <li class="rbt-breadcrumb-item active"></li>
                     </ul>
                     <h2 class="title">{{LANDING_COURSE.title}}</h2>
@@ -192,7 +189,7 @@
                     <div class="inner">
 
                         <!-- Start Viedo Wrapper  -->
-                        <a class="video-popup-with-text video-popup-wrapper text-center popup-video sidebar-video-hidden mb--15" href="https://www.youtube.com/watch?v=nA1Aqp0sPQo">
+                        <a class="video-popup-with-text video-popup-wrapper text-center popup-video sidebar-video-hidden mb--15" onclick="return false">
                             <div class="video-content">
                                 <!--<img class="w-100 rbt-radius" src="assets/images/others/video-01.jpg" alt="Video Images">-->
                                 <img class="w-100" [src]="LANDING_COURSE.imagen" alt="Card image">
@@ -209,7 +206,7 @@
                         <div class="content-item-content">
                             <div class="rbt-price-wrapper d-flex flex-wrap align-items-center justify-content-between">
                                 <div class="rbt-price">
-                                    <span class="current-price">S/.{{LANDING_COURSE.precio_pen}}</span>
+                                    <span class="current-price">S/.{{LANDING_COURSE.precio}}</span>
                                    
                                 </div>
                                

@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit{
   }
 
   getTotalPrice(COURSE:any){
-    return COURSE.precio_pen;
+    return COURSE.precio;
   }
   addCart(LANDING_COURSE:any){
     if(!this.user){

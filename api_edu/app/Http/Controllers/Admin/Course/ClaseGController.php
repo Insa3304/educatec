@@ -51,32 +51,35 @@ class ClaseGController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        $clase = CourseClase::create($request->all());
+{
+    $clase = CourseClase::create($request->all());
 
-
+    // Verificar si se subieron archivos
+    if ($request->hasFile('files')) {
         foreach ($request->file("files") as $key => $file) {
             $extension = $file->getClientOriginalExtension();
             $size = $file->getSize();
             $name_file = $file->getClientOriginalName();
             $data = null;
-            if(in_array(strtolower($extension),["jpeg","bmp","jpg","png"])){
+            if (in_array(strtolower($extension), ["jpeg", "bmp", "jpg", "png"])) {
                 $data = getimagesize($file);
             }
-            $path = Storage::putFile("clases_files",$file);
+            $path = Storage::putFile("clases_files", $file);
             // 600 x 400
-            $clase_file = CourseClaseFile::create([
+            CourseClaseFile::create([
                 "course_clase_id" => $clase->id,
                 "name_file" => $name_file,
                 "size" => $size,
-                "resolution" => $data ? $data[0]. " X ".$data[1] : NULL,
+                "resolution" => $data ? $data[0] . " X " . $data[1] : NULL,
                 "file" => $path,
                 "type" => $extension,
             ]);
         }
-       
-        return response()->json(["clase" => CourseClaseResource::make($clase)]);
     }
+
+    return response()->json(["clase" => CourseClaseResource::make($clase)]);
+}
+
 
 
     public function upload_video(Request $request,$id)

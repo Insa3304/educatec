@@ -21,7 +21,7 @@ class Course extends Model
         "slug",
         "imagen",
         
-        "precio_pen",
+        "precio",
         "categorie_id",
         "sub_categorie_id",
         "user_id",

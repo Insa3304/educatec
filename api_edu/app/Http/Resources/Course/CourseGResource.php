@@ -36,7 +36,7 @@ class CourseGResource extends JsonResource
                 "name" => $this->resource->sub_categorie->name
             ] : null,
 
-            "precio_pen" => $this->resource->precio_pen,
+            "precio" => $this->resource->precio,
             "user_id" => $this->resource->user_id,
 
             // Validar si el instructor existe antes de acceder a sus propiedades

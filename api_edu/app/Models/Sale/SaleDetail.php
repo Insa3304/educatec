@@ -15,7 +15,7 @@ class SaleDetail extends Model
     protected $fillable=[
         "sale_id",
         "course_id",
-         "total"
+         "total",
     ];
 
     public function setCreatedAtAttribute($value)

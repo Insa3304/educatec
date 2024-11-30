@@ -54,7 +54,7 @@
                                            
                                            <div class="rbt-card-bottom">
                                                <div class="rbt-price">
-                                                   <span class="current-price">S/.{{COURSE.precio_pen}}</span>
+                                                   <span class="current-price">S/.{{COURSE.precio}}</span>
                                                    
                                                </div>
                                               
@@ -376,12 +376,12 @@
                                     </a>
                                 </div>
                                 <div class="rbt-author-info">
-                                    By <a href="profile.html">{{COURSE.instructor.full_name}}</a> In <a href="#">{{COURSE.instructor.profesion}}</a>
+                                    Por <a href="profile.html">{{COURSE.instructor.full_name}}</a> en <a href="#">{{COURSE.instructor.profesion}}</a>
                                 </div>
                             </div>
                             <div class="rbt-card-bottom">
                                 <div class="rbt-price">
-                                    <span class="current-price">S/.{{COURSE.precio_pen}}</span>
+                                    <span class="current-price">S/.{{COURSE.precio}}</span>
                                     
                                 </div>
                                 <a class="rbt-btn-link" href="#"  
@@ -516,7 +516,7 @@
       
                               <div class="rbt-card-bottom">
                                 <div class="rbt-price">
-                                  <span class="current-price">S/.{{ courses.precio_pen }}</span>
+                                  <span class="current-price">S/.{{ courses.precio }}</span>
                                 </div>
                                 <a class="rbt-btn-link" href="#"  
                                                onclick="return false" (click)="addCart(courses)">
