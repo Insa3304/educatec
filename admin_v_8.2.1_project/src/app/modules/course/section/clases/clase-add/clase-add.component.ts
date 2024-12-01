@@ -41,11 +41,7 @@ export class ClaseAddComponent implements OnInit {
 
   save() {
     if (!this.title) {
-      this.toastr.error("NECESITAS INGRESAR UN TITULO DE LA CLASE", "VALIDACIÓN"); // Cambiado a toastr.error
-      return;
-    }
-    if (this.FILES.length === 0) {
-      this.toastr.error("NECESITAS SUBIR UN RECURSO A LA CLASE", "VALIDACIÓN"); // Cambiado a toastr.error
+      this.toastr.error("NECESITAS INGRESAR UN TITULO DE LA CLASE", "VALIDACIÓN");
       return;
     }
 
@@ -54,13 +50,16 @@ export class ClaseAddComponent implements OnInit {
     formData.append("description", this.description);
     formData.append("course_section_id", this.section_id);
 
-    this.FILES.forEach((file: any, index: number) => {
-      formData.append(`files[${index}]`, file);
-    });
+    // Solo agregar archivos si existen
+    if (this.FILES.length > 0) {
+      this.FILES.forEach((file: any, index: number) => {
+        formData.append(`files[${index}]`, file);
+      });
+    }
 
     this.courseService.registerClase(formData).subscribe((resp: any) => {
       console.log(resp);
-      this.toastr.success("La clase se ha registrado correctamente", "Éxito"); // Cambiado a toastr.success
+      this.toastr.success("La clase se ha registrado correctamente", "Éxito");
       this.CLASES.push(resp.clase);
       this.title = null;
       this.description = null;

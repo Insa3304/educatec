@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CourseService } from '../service/course.service';
 import { ToastrService } from 'ngx-toastr';
 
+
 @Component({
   selector: 'app-course-add',
   templateUrl: './course-add.component.html',
@@ -20,7 +21,7 @@ export class CourseAddComponent implements OnInit {
 
   title: string = '';
   subtitle: string = '';
-  precio_pen: number = 0;
+  precio: number = 0;
   description: any = "<p>Hello, world!</p>";
   categorie_id: any = null;
   sub_categorie_id: any = null;
@@ -51,15 +52,15 @@ export class CourseAddComponent implements OnInit {
   }
 
   save() {
-    if (!this.title || !this.subtitle || !this.precio_pen || !this.categorie_id || !this.sub_categorie_id) {
-      this.toastr.error("Necesitas llenar todos los campos del formulario", "Validación");
+    if (!this.title || !this.subtitle || !this.precio || !this.categorie_id || !this.sub_categorie_id || !this.description) {
+      this.toastr.error("Necesitas llenar todos los campos del formulario", "Atención");
       return;
     }
 
     let formData = new FormData();
     formData.append("title", this.title);
     formData.append("subtitle", this.subtitle);
-    formData.append("precio_pen", this.precio_pen + "");
+    formData.append("precio", this.precio + "");
     formData.append("categorie_id", this.categorie_id);
     formData.append("sub_categorie_id", this.sub_categorie_id);
     formData.append("description", this.description);
@@ -75,7 +76,7 @@ export class CourseAddComponent implements OnInit {
         this.toastr.success("El curso se ha creado con éxito", "Éxito");
         this.title = '';
         this.subtitle = '';
-        this.precio_pen = 0;
+        this.precio = 0;
         this.categorie_id = null;
         this.sub_categorie_id = null;
         this.description = null;

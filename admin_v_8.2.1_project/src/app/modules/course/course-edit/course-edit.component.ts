@@ -22,8 +22,7 @@ export class CourseEditComponent implements OnInit {
 
   title: string = '';
   subtitle: string = '';
-  precio_usd: number = 0;
-  precio_pen: number = 0;
+  precio: number = 0;
   description: any = "<p>Hello, world!</p>";
   categorie_id: any = null;
   sub_categorie_id: any = null;
@@ -65,7 +64,7 @@ export class CourseEditComponent implements OnInit {
       this.course_selected = resp.course;
       this.title = this.course_selected.title;
       this.subtitle = this.course_selected.subtitle;
-      this.precio_pen = this.course_selected.precio_pen;
+      this.precio = this.course_selected.precio;
       
       this.categorie_id = this.course_selected.categorie_id;
       this.selectCategorie({ target: { value: this.categorie_id } });
@@ -93,7 +92,7 @@ export class CourseEditComponent implements OnInit {
   }
 
   save() {
-    if (!this.title || !this.subtitle || !this.precio_pen || !this.categorie_id || !this.sub_categorie_id) {
+    if (!this.title || !this.subtitle || !this.precio || !this.categorie_id || !this.sub_categorie_id) {
       this.toastr.error("Necesitas llenar todos los campos del formulario", "Validación");
       return;
     }
@@ -101,7 +100,7 @@ export class CourseEditComponent implements OnInit {
     let formData = new FormData();
     formData.append("title", this.title);
     formData.append("subtitle", this.subtitle);
-    formData.append("precio_pen", this.precio_pen + "");
+    formData.append("precio", this.precio + "");
     formData.append("categorie_id", this.categorie_id);
     formData.append("sub_categorie_id", this.sub_categorie_id);
     formData.append("description", this.description);

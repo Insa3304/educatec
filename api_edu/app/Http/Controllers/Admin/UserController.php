@@ -23,6 +23,7 @@ class UserController extends Controller
  
 
         $users = User::filterAdvance($search, $state)->where ("type_user",2)->orderby("id","desc")->get();
+        
 
         return response()->json([
             "users"=> UserGCollection::make($users), //referencia a lista de usuarios, por eso se usa el collection

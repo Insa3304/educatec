@@ -327,7 +327,7 @@
 																																		<td class="btn-20 btn-secondary c-white l-white" bgcolor="#f3189e" style="font-size:20px; line-height:24px; mso-padding-alt:15px 35px; font-family:'PT Sans', Arial, sans-serif; text-align:center; font-weight:bold; text-transform:uppercase; min-width:auto !important; border-radius:10px; background:linear-gradient(to right, #9028df 0%,#f3189e 100%); color:#ffffff;">
 																																			<multiline>
 																																				<a href="#" target="_blank" class="link c-white" style="display: block; padding: 15px 35px; text-decoration:none; color:#ffffff;">
-																																					<span class="link c-white" style="text-decoration:none; color:#ffffff;">TOTAL: ${{$sale->total}}</span>
+																																					<span class="link c-white" style="text-decoration:none; color:#ffffff;">TOTAL: S/.{{$sale->total}}</span>
 																																				</a>
 																																			</multiline>
 																																		</td>

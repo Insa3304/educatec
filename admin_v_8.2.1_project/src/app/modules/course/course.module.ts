@@ -21,6 +21,7 @@ import { ClaseDeleteComponent } from './section/clases/clase-delete/clase-delete
 import { ClaseFileDeleteComponent } from './section/clases/clase-file-delete/clase-file-delete.component';
 
 
+
 @NgModule({
   declarations: [
     CourseComponent,
@@ -46,6 +47,8 @@ import { ClaseFileDeleteComponent } from './section/clases/clase-file-delete/cla
     InlineSVGModule,
     NgbModalModule,
     CKEditorModule,
+   
+    
   ]
 })
 export class CourseModule { }

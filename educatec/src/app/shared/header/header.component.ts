@@ -62,7 +62,7 @@ export class HeaderComponent implements OnInit{
   removeItem(cart:any){
     this.cartService.deleteCart(cart.id).subscribe((resp:any) => {
       console.log(resp);
-      alertSuccess("EL ITEM SE A ELIMINADO CORRECTAMENTE ");
+      alertSuccess("EL ITEM SE HA ELIMINADO CORRECTAMENTE ");
       this.cartService.removeItemCart(cart);
     })
   }

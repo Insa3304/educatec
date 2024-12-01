@@ -18,7 +18,7 @@
                     <input type="text" class="form-control form-control-solid" name="title" [(ngModel)]="title" placeholder="Ascenso magisterial">
                 </div>
                 <div class="col-7">
-                    <label class="fs-6 fw-bold mt-2 mb-3">Subnombre del curso: </label>
+                    <label class="fs-6 fw-bold mt-2 mb-3">Etiqueta del curso: </label>
                     <input type="text" class="form-control form-control-solid" name="subtitle" [(ngModel)]="subtitle" placeholder="Pasos para ascender">
                 </div>
             </div>
@@ -27,7 +27,7 @@
             <div class="row mb-8">
                 <div class="col-2">
                     <label class="fs-6 fw-bold mt-2 mb-3">Precio: </label>
-                    <input type="number" class="form-control form-control-solid" name="pen" [(ngModel)]="precio_pen" placeholder="30">
+                    <input type="number" class="form-control form-control-solid" name="pen" [(ngModel)]="precio" placeholder="30">
                 </div>
                
                 <div class="col-4">
@@ -69,7 +69,7 @@
                     <label class="form-label">Subir portada: *</label>
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="customFile"  accept=".jpeg, .bmp, .jpg, .png, .gif, .webp"  (change)="processFile($event)">
-                        <label class="custom-file-label" for="customFile">Choose file</label>
+                        <label class="custom-file-label" for="customFile">Escoger archivo</label>
                     </div>
                     <div class="py-3" *ngIf="IMAGEN_PREVISUALIZA">
                         <img [src]="IMAGEN_PREVISUALIZA" width="250" alt="" srcset="">
@@ -97,7 +97,7 @@
                         <div class="custom-file">
                              
                             <input type="file" class="custom-file-input" id="customFile"  accept=".mp4" (change)="processVideo($event)" >
-                            <label class="custom-file-label" for="customFile">Choose video</label>
+                            <label class="custom-file-label" for="customFile">Escoge video</label>
                         </div>
                         <div *ngIf="link_video_course" class="py-4">
                             <iframe [src]="urlVideo()" width="640" height="564" frameborder="0" allow="autoplay; fullscreen" allowfullscreen></iframe>

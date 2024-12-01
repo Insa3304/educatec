@@ -1,5 +1,6 @@
 <!-- Start Header Area -->
 <header class="rbt-header rbt-header-10">
+    
     <div class="rbt-sticky-placeholder"></div>
     <!-- Start Header Top  -->
     <div class="rbt-header-top rbt-header-top-1 header-space-betwween bg-not-transparent bg-color-darker top-expended-activation">
@@ -203,9 +204,7 @@
                     <!-- Navbar Icons -->
                     <ul class="quick-access">
                         <li class="access-icon">
-                            <a class="search-trigger-active rbt-round-btn" href="#">
-                                <i class="feather-search"></i>
-                            </a>
+                           
                         </li>
   
                         <li class="access-icon rbt-mini-cart">
@@ -217,90 +216,31 @@
   
                         <li class="account-access rbt-user-wrapper d-none d-xl-block">
                             <a href="#" *ngIf="user"><i class="feather-user"></i>{{user.name}}-</a> 
-                            <a href="#" *ngIf="!user"><i class="feather-user"></i>Ingresar</a>
+                            <a href="auth/login" *ngIf="!user"><i class="feather-user"></i>Ingresar</a>
                             
                             <div class="rbt-user-menu-list-wrapper">
                                 <div class="inner">
                                     <div class="rbt-admin-profile" *ngIf="user">
                                         <div class="admin-thumbnail">
-                                            <img src= "" alt="User Images">
+                                            <img src= "assets/images/imagenes/user.png" alt="User Images">
                                         </div>
                                         <div class="admin-info">
                                             <span class="name">{{user.name}}</span>
-                                            <a class="rbt-btn-link color-primary" href="/perfil-del-cliente">View Profile</a>
+                                            <a class="rbt-btn-link color-primary" href="/perfil-del-cliente">Mi perfil</a>
                                         </div>
                                     </div>
                                     <ul class="user-list-wrapper" *ngIf="user">
                                         <li>
-                                            <a href="instructor-dashboard.html">
+                                            <a href="/perfil-del-cliente">
                                                 <i class="feather-home"></i>
-                                                <span>My Dashboard</span>
+                                                <span>Mi Dashboard</span>
                                             </a>
                                         </li>
-                                        <li>
-                                            <a href="#">
-                                                <i class="feather-bookmark"></i>
-                                                <span>Bookmark</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="instructor-enrolled-courses.html">
-                                                <i class="feather-shopping-bag"></i>
-                                                <span>Enrolled Courses</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="instructor-wishlist.html">
-                                                <i class="feather-heart"></i>
-                                                <span>Wishlist</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="instructor-reviews.html">
-                                                <i class="feather-star"></i>
-                                                <span>Reviews</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="instructor-my-quiz-attempts.html">
-                                                <i class="feather-list"></i>
-                                                <span>My Quiz Attempts</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="instructor-order-history.html">
-                                                <i class="feather-clock"></i>
-                                                <span>Order History</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="instructor-quiz-attempts.html">
-                                                <i class="feather-message-square"></i>
-                                                <span>Question & Answer</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <hr class="mt--10 mb--10">
-                                    <ul class="user-list-wrapper">
-                                        <li>
-                                            <a href="#">
-                                                <i class="feather-book-open"></i>
-                                                <span>Getting Started</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                    <hr class="mt--10 mb--10">
-                                    <ul class="user-list-wrapper">
-                                        <li>
-                                            <a href="instructor-settings.html">
-                                                <i class="feather-settings"></i>
-                                                <span>Settings</span>
-                                            </a>
-                                        </li>
+                                        
                                         <li *ngIf="user">
                                             <a href="#" onclick = "return false;"(click)="logout()">
                                                 <i class="feather-log-out"></i>
-                                                <span>Logout</span>
+                                                <span>Cerrar sesión</span>
                                             </a>
                                         </li>
                                         
@@ -308,7 +248,7 @@
                                     <li *ngIf="!user">
                                         <a routerLink="auth/login">
                                             <i class="feather-log-out"></i>
-                                            <span>Login</span>
+                                            <span>Iniciar sesión</span>
                                         
                                         
                                         </a>
@@ -414,7 +354,7 @@
   
                     <div class="rbt-btn-wrapper d-none d-xl-block">
                         <a class="rbt-btn rbt-marquee-btn marquee-auto btn-border-gradient radius-round btn-sm hover-transform-none" href="#">
-                            <span data-text="Enroll Now">Enroll Now</span>
+                            <span data-text="Unete ya">Unete ya</span>
                         </a>
                     </div>
   
@@ -1360,7 +1300,7 @@
         <div class="inner-top">
             <div class="content">
                 <div class="title">
-                    <h4 class="title mb--0">Your shopping cart</h4>
+                    <h4 class="title mb--0">Tu carrito </h4>
                 </div>
                 <div class="rbt-btn-close" id="btn_sideNavClose">
                     <button class="minicart-close-button rbt-round-btn"><i class="feather-x"></i></button>
@@ -1400,7 +1340,7 @@
             <div class="rbt-minicart-bottom mt--20">
                 <div class="view-cart-btn">
                     <a class="rbt-btn btn-border icon-hover w-100 text-center" href="/carrito-de-compra ">
-                        <span class="btn-text">View Cart</span>
+                        <span class="btn-text">Pagar</span>
                         <span class="btn-icon"><i class="feather-arrow-right"></i></span>
                     </a>
                 </div>
