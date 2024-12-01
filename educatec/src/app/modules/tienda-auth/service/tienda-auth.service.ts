@@ -21,7 +21,6 @@ export class TiendaAuthService {
       return this.http.post(URL,{},{headers: this.headers});
   }
 
-<<<<<<< HEAD
   createPreference(idUsuario: number): Observable<any> {
     const URL = `${this.urlMercadoPago}/ecommerce/create-preference`; // Asegúrate de que esta URL sea correcta.
     const headers = this.headers; // Confirma que headers está correctamente configurado.
@@ -36,11 +35,9 @@ export class TiendaAuthService {
     return this.http.get(URL, { headers });
   }
 
-=======
   showCourse(slug:any){
     let headers= new HttpHeaders({'Authorization': 'Bearer '+this.authService.token});
     let URL = URL_SERVICIOS+ "/ecommerce/course_leason/"+slug;
     return this.http.get(URL,{headers:headers});
   }
->>>>>>> e4c9704a9393a7ec0cf9477c38538e85c41d3182
 }

@@ -10,11 +10,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProfileClientComponent } from './profile-client/profile-client.component';
-<<<<<<< HEAD
+
 import { PaymentComponent } from './payment/payment.component';
-=======
+
 import { CourseLeasonComponent } from './course-leason/course-leason.component';
->>>>>>> e4c9704a9393a7ec0cf9477c38538e85c41d3182
+
 
 
 
@@ -24,11 +24,11 @@ import { CourseLeasonComponent } from './course-leason/course-leason.component';
     TiendaAuthComponent,
     ListCartsComponent,
     ProfileClientComponent,
-<<<<<<< HEAD
-    PaymentComponent
-=======
+
+    PaymentComponent,
+
     CourseLeasonComponent
->>>>>>> e4c9704a9393a7ec0cf9477c38538e85c41d3182
+
   ],
   imports: [
     CommonModule,

@@ -15,8 +15,8 @@ export class AuthService {
   constructor(
     public http: HttpClient,
     public router: Router,
-    
-  ) { 
+
+  ) {
     this.initAuth();
   }
   initAuth(){  //cargar localstorage ()usuario y token) para que se almacene dentro de esta variable
@@ -26,29 +26,30 @@ export class AuthService {
     }
   }
 
-  login(email: string, password:string) 
+  login(email: string, password:string)
   {
     let URL = URL_SERVICIOS+"/auth/login_tienda";
-    return this.http.post(URL,{email: email, password: password}).pipe( 
+    return this.http.post(URL,{email: email, password: password}).pipe(
       map((auth: any) => {
         console.log(auth);
-        const result = this.saveLocalStorage(auth); 
+        const result = this.saveLocalStorage(auth);
         return result;
       }),
-      
+
       catchError((err) => {
         console.error('err', err);
         return of(undefined);
       }),
-      
+
     );
   }
-    
-  
+
+
   saveLocalStorage(auth:any){
     if(auth &&auth.access_token){
         localStorage.setItem("token",auth.access_token);
         localStorage.setItem("user",JSON.stringify(auth.user));
+        localStorage.setItem("token",auth.access_token);
         return true;
     }
     return false;

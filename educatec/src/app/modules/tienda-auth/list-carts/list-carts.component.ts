@@ -120,7 +120,7 @@ export class ListCartsComponent implements OnInit{
               ticket: "all",
               creditCard: "all",
               debitCard: "all",
-              mercadoPago: "all",
+              mercadoPago: "creditCard,debitCard",
             },
             texts: {
               valueProp: 'smart_option',
