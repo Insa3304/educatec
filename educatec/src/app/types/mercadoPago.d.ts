@@ -1,3 +1,4 @@
+
 declare namespace MercadoPago {
   interface MercadoPagoStatic {
     new (publicKey: string, options?: any): MercadoPagoInstance;

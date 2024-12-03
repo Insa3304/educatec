@@ -3,6 +3,7 @@ import { CartService } from '../../tienda-guest/service/cart.service';
 import { TiendaAuthService } from '../service/tienda-auth.service';
 
 
+
 declare function alertSuccess([]):any;
 declare function alertDanger([]):any;
 declare var paypal:any;
@@ -102,7 +103,7 @@ export class ListCartsComponent implements OnInit{
 
   }
 
-  initMercadoPago(){
+ /* initMercadoPago(){
     const mp = new MercadoPago("APP_USR-c4025ed5-b94f-4785-a64e-68d32e21e492");
     const bricksBuilder = mp.bricks();
     const idUsuario =1;
@@ -145,10 +146,46 @@ export class ListCartsComponent implements OnInit{
       alertSuccess("EL ITEM SE HA ELIMINADO CORRECTAMENTE ");
       this.cartService.removeItemCart(cart);
     })
-  }
-
+  }*/
+    async initMercadoPago() {
+      try {
+        const mp = new MercadoPago("APP_USR-c4025ed5-b94f-4785-a64e-68d32e21e492");
+        const bricksBuilder = mp.bricks();
+        const idUsuario = 1;
+    
+        // Crear la preferencia de MercadoPago
+        const response = await this.mercadoPagoService.createPreference(idUsuario).toPromise();
+        
+        if (!response || !response.id) {
+          throw new Error('No se recibió un ID de preferencia válido');
+        }
+    
+        const preference_id = response.id;
+    
+        // Crear el widget Wallet usando el preference_id
+        await bricksBuilder.create("wallet", "wallet_container", {
+          initialization: {
+            preferenceId: preference_id,
+          },
+          customization: {
+            paymentMethods: {
+              ticket: "all",
+              creditCard: "all",
+              debitCard: "all",
+              mercadoPago: "creditCard,debitCard",
+            },
+            texts: {
+              valueProp: 'smart_option',
+            },
+          },
+        });
+    
+        console.log('Wallet inicializado correctamente');
+      } catch (error) {
+        console.error("Error en initMercadoPago:", error);
+      }
 
 }
-
+}
 
 

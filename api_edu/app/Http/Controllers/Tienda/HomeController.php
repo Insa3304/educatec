@@ -105,7 +105,7 @@ class HomeController extends Controller
             ->first();
     
         if (!$course_student) {
-            return response()->json(["message" => 403, "message_text" => "TU NO ESTÁS INSCRITO EN ESTE CURSO"], 403);
+            return response()->json(["message" => 403, "message_text" => "NO ESTÁS INSCRITO EN ESTE CURSO"], 403);
         }
     
         // Retornar la información del curso si todo está correcto

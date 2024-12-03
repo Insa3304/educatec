@@ -98,7 +98,6 @@ class MercadoPagoController extends Controller
 
             $client = new PreferenceClient();
             $preference = $client->create($preference_data);
-
             return response()->json($preference);
         } catch (MPApiException $e) {
             // Manejo del error de la API de MercadoPago
