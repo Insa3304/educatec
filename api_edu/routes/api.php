@@ -64,21 +64,32 @@ Route::group([
     Route::post('/course-clases/upload_video/{id}', [ClaseGController::class, "upload_video"]);
 });
 
-Route::group([
-    'prefix' => 'ecommerce'
-], function () {
-    Route::get('home', [HomeController::class, 'home']);
-    Route::get('course-detail/{slug}', [HomeController::class, 'course_detail']);
+Route::group(["prefix" => "ecommerce"], function () {
+    Route::get("home", [HomeController::class, "home"]);
+    Route::get("course-detail/{slug}", [HomeController::class, "course_detail"]);
 
     Route::group([
         'middleware' => 'api',
-    ], function () {
-        Route::get('course_leason/{slug}', [HomeController::class, 'course_leason']);
+
+    ], function ($router) {
         Route::resource('/cart', CartController::class);
-        Route::post('/checkout', [CheckoutController::class, 'store']);
-        Route::post('/profile', [ProfileClientController::class, 'profile']); 
+        Route::post('/checkout', [CheckoutController::class, "store"]);
+        Route::post('/profile', [ProfileClientController::class, "profile"]);
         Route::post('/create-preference', [MercadoPagoController::class, 'createPreference']);
         Route::post('/process-payment', [MercadoPagoController::class, 'processPayment']);
         Route::get('/pago/success', [MercadoPagoController::class, 'success'])->name('pago.success');
-    });
+
+
+        Route::get("course_leason/{slug}",[HomeController::class,"course_leason"]);
+    Route::resource('/cart',CartController::class);
+    Route::post('/checkout',[CheckoutController::class,"store"]);
+    Route::post('/profile',[ProfileClientController::class,"profile"]);
+    //Route::post('/create-payment', [PaymentController::class, 'createPayment']);
+
+});
+
+    Route::get("course_leason/{slug}", [HomeController::class, "course_leason"]);
+    Route::resource('/cart', CartController::class);
+    Route::post('/checkout', [CheckoutController::class, "store"]);
+    Route::post('/profile', [ProfileClientController::class, "profile"]);
 });
