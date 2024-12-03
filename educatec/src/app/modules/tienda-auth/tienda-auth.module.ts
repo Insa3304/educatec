@@ -11,7 +11,7 @@ import { RouterModule } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { ProfileClientComponent } from './profile-client/profile-client.component';
 
-import { PaymentComponent } from './payment/payment.component';
+//import { PaymentComponent } from './payment/payment.component';
 
 import { CourseLeasonComponent } from './course-leason/course-leason.component';
 
@@ -25,7 +25,7 @@ import { CourseLeasonComponent } from './course-leason/course-leason.component';
     ListCartsComponent,
     ProfileClientComponent,
 
-    PaymentComponent,
+   // PaymentComponent,
 
     CourseLeasonComponent
 

@@ -64,32 +64,21 @@ Route::group([
     Route::post('/course-clases/upload_video/{id}', [ClaseGController::class, "upload_video"]);
 });
 
-Route::group(["prefix" => "ecommerce"], function () {
-    Route::get("home", [HomeController::class, "home"]);
-    Route::get("course-detail/{slug}", [HomeController::class, "course_detail"]);
+Route::group([
+    'prefix' => 'ecommerce'
+], function () {
+    Route::get('home', [HomeController::class, 'home']);
+    Route::get('course-detail/{slug}', [HomeController::class, 'course_detail']);
 
     Route::group([
         'middleware' => 'api',
-<<<<<<< HEAD
     ], function () {
+        Route::get('course_leason/{slug}', [HomeController::class, 'course_leason']);
         Route::resource('/cart', CartController::class);
-        Route::post('/checkout', [CheckoutController::class, "store"]);
-        Route::post('/profile', [ProfileClientController::class, "profile"]);
+        Route::post('/checkout', [CheckoutController::class, 'store']);
+        Route::post('/profile', [ProfileClientController::class, 'profile']); 
         Route::post('/create-preference', [MercadoPagoController::class, 'createPreference']);
         Route::post('/process-payment', [MercadoPagoController::class, 'processPayment']);
         Route::get('/pago/success', [MercadoPagoController::class, 'success'])->name('pago.success');
-=======
-    ], function ($router) {
-        Route::get("course_leason/{slug}",[HomeController::class,"course_leason"]);
-    Route::resource('/cart',CartController::class);
-    Route::post('/checkout',[CheckoutController::Class,"store"]);
-    Route::post('/profile',[ProfileClientController::Class,"profile"]);
-    //Route::post('/create-payment', [PaymentController::class, 'createPayment']);
->>>>>>> 2fe0ea8fc66cba6a468de9065424362ebf0517c7
     });
-
-    Route::get("course_leason/{slug}", [HomeController::class, "course_leason"]);
-    Route::resource('/cart', CartController::class);
-    Route::post('/checkout', [CheckoutController::class, "store"]);
-    Route::post('/profile', [ProfileClientController::class, "profile"]);
 });
