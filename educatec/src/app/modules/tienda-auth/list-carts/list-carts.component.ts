@@ -147,6 +147,7 @@ export class ListCartsComponent implements OnInit{
       this.cartService.removeItemCart(cart);
     })
   }*/
+
     async initMercadoPago() {
       try {
         const mp = new MercadoPago("APP_USR-c4025ed5-b94f-4785-a64e-68d32e21e492");

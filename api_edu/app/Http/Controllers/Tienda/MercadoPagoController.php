@@ -4,15 +4,12 @@ namespace App\Http\Controllers\Tienda;
 
 use App\Http\Controllers\Controller;
 use App\Models\Sale\Cart;
-use Faker\Core\Number;
 use Illuminate\Http\Request;
 use MercadoPago\Client\Preference\PreferenceClient;
-use MercadoPago\Exceptions\MPApiException;
 use MercadoPago\MercadoPagoConfig;
 
 class MercadoPagoController extends Controller
 {
-    //
     public function __construct()
     {
         // Mover la configuración al constructor
@@ -98,6 +95,7 @@ class MercadoPagoController extends Controller
 
             $client = new PreferenceClient();
             $preference = $client->create($preference_data);
+
             return response()->json($preference);
         } catch (MPApiException $e) {
             // Manejo del error de la API de MercadoPago
