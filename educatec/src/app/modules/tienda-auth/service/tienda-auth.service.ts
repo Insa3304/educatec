@@ -27,7 +27,6 @@ export class TiendaAuthService {
 
     return this.http.post(URL, idUsuario,{ headers });
   }
-
   getDetailsCart(): Observable<any> {
     const URL = `${this.urlMercadoPago}/ecommerce/cart/`;
     const headers = this.headers;
