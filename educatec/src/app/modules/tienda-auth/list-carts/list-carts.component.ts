@@ -150,19 +150,21 @@ export class ListCartsComponent implements OnInit{
 
     async initMercadoPago() {
       try {
-        const mp = new MercadoPago("APP_USR-c4025ed5-b94f-4785-a64e-68d32e21e492");
+        const mp = new MercadoPago("APP_USR-c4025ed5-b94f-4785-a64e-68d32e21e492",{
+          locale: 'es-PE'
+        });
         const bricksBuilder = mp.bricks();
         const idUsuario = 1;
-    
+
         // Crear la preferencia de MercadoPago
         const response = await this.mercadoPagoService.createPreference(idUsuario).toPromise();
-        
+
         if (!response || !response.id) {
           throw new Error('No se recibió un ID de preferencia válido');
         }
-    
+
         const preference_id = response.id;
-    
+
         // Crear el widget Wallet usando el preference_id
         await bricksBuilder.create("wallet", "wallet_container", {
           initialization: {
@@ -176,11 +178,13 @@ export class ListCartsComponent implements OnInit{
               mercadoPago: "creditCard,debitCard",
             },
             texts: {
-              valueProp: 'smart_option',
+              action:'pay',
+              valueProp: 'security_details',
+
             },
           },
         });
-    
+
         console.log('Wallet inicializado correctamente');
       } catch (error) {
         console.error("Error en initMercadoPago:", error);

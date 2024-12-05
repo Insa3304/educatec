@@ -78,7 +78,8 @@ Route::group(["prefix" => "ecommerce"], function () {
         Route::post('/create-preference', [MercadoPagoController::class, 'createPreference']);
         Route::post('/process-payment', [MercadoPagoController::class, 'processPayment']);
         Route::get('/pago/success', [MercadoPagoController::class, 'success'])->name('pago.success');
-
+        Route::get('/pago/failure', [MercadoPagoController::class, 'failure'])->name('pago.failure');
+        Route::get('/pago/pending', [MercadoPagoController::class, 'pending'])->name('pago.pending');
 
         Route::get("course_leason/{slug}",[HomeController::class,"course_leason"]);
     Route::resource('/cart',CartController::class);

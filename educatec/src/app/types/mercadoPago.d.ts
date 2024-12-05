@@ -24,6 +24,7 @@ declare namespace MercadoPago {
         mercadoPago?: string;
       };
       texts?: {
+        action?: string;
         valueProp?: string;
       };
 

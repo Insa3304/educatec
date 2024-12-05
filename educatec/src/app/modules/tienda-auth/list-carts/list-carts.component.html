@@ -64,10 +64,11 @@
 
             <div class="col-lg-5 offset-lg-1 col-12">
               <div class="cart-summary">
-                <div class="cart-summary-wrap">
+                <div *ngFor="let cart of listCarts" class="cart-summary-wrap">
                   <div class="section-title text-start">
                     <h4 class="title mb--30">Resumen de Compra</h4>
                   </div>
+
 
                   <h2>
                     Total<span>S/.{{ totalSum }}</span>

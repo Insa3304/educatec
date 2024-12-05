@@ -61,7 +61,7 @@ class CartController extends Controller
             return response()->json(["message"=> 403, "message_text" =>"Ya haz agregado el curso al carrito"]);
         }
 
-       
+
 
         $request->request->add(["user_id" =>$user->id]);
         $cart = Cart::create($request->all());

@@ -1,0 +1,73 @@
+.cart-summary {
+  background: #f9f9f9;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  margin-bottom: 20px;
+}
+
+.section-title .title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #333;
+}
+
+.course-details {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.course-image {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+}
+
+.course-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.course-subtitle {
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.course-slug {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.total-section {
+  text-align: center;
+  margin-top: 20px;
+  border-top: 1px solid #ddd;
+  padding-top: 15px;
+}
+
+.total-section h3 {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #555;
+}
+
+.total-section h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.cart-submit-btn-group {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.payment-option {
+  margin-top: 10px;
+}

@@ -14,10 +14,10 @@ class CartResource extends JsonResource
      */
     public function toArray($request)
     {
- 
+
 
         return [
-            
+
             "id" => $this->resource->id,
             "user_id" => $this->resource->user_id,
             "course_id" => $this->resource->course_id,
@@ -27,7 +27,7 @@ class CartResource extends JsonResource
                 "subtitle" => $this->resource->course->subtitle,
                 "slug" => $this->resource->course->slug,
             ],
-            
+
             "total" => $this->resource->total,
         ];
 
