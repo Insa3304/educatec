@@ -150,7 +150,7 @@ export class ListCartsComponent implements OnInit{
 
     async initMercadoPago() {
       try {
-        const mp = new MercadoPago("APP_USR-c4025ed5-b94f-4785-a64e-68d32e21e492",{
+        const mp = new MercadoPago("APP_USR-81582333-80ef-443a-be55-3b13aff0cba7",{
           locale: 'es-PE'
         });
         const bricksBuilder = mp.bricks();

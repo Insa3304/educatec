@@ -63,6 +63,8 @@ export class LoginComponent implements OnInit {
     alert ("Las contrasesñas no coinciden");
     return;
   }
+
+  
   let data = {
     email:this.email_register ,
     name: this.name,
