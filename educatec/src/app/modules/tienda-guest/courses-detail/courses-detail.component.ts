@@ -22,7 +22,7 @@ export class CoursesDetailComponent implements OnInit{
  LANDING_COURSE: any=null;
  user: any =null;
 
- is_have_course:any = null
+ is_have_course:any = false;
 
   constructor(
     public activedRouter: ActivatedRoute,
@@ -59,7 +59,7 @@ export class CoursesDetailComponent implements OnInit{
    
   }
   getTotalPrice(COURSE:any){
-    return COURSE.precio_pen;
+    return COURSE.precio;
 
   }
  
@@ -72,7 +72,7 @@ export class CoursesDetailComponent implements OnInit{
     let data ={
        //user_id:this.LANDING_COURSE,
         course_id: this.LANDING_COURSE.id,
-        total: this.getTotalPrice(this.LANDING_COURSE) ,
+        total: this.getTotalPrice(this.LANDING_COURSE),
     };
 
     this.cartService.registerCart(data).subscribe((resp:any)=>{

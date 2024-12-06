@@ -135,14 +135,14 @@
                             </div>
                             <div class="media align-items-center">
                                 <div class="thumbnail">
-                                    <a href="#">
+                                    <a href="#" onclick="return false">
                                         <img [src]="LANDING_COURSE.instructor.avatar" alt="Author Images">
                                     </a>
                                 </div>
                                 <div class="media-body">
                                     <div class="author-info">
                                         <h5 class="title">
-                                            <a class="hover-flip-item-wrapper" href="author.html">{{LANDING_COURSE.instructor.full_name}}</a>
+                                            <a class="hover-flip-item-wrapper" href="author.html" onclick="return false">{{LANDING_COURSE.instructor.full_name}}</a>
                                         </h5>
                                         <span class="b3 subtitle">{{LANDING_COURSE.instructor.profesion}}</span>
                                         
@@ -151,11 +151,11 @@
                                         <p class="description">{{LANDING_COURSE.instructor.description}}</p>
 
                                         <ul class="social-icon social-default icon-naked justify-content-start">
-                                            <li><a href="https://www.facebook.com/">
+                                            <li><a href="https://www.facebook.com/@educatecnortep">
                                                     <i class="feather-facebook"></i>
                                                 </a>
                                             </li>
-                                            <li><a href="https://www.twitter.com">
+                                           <!-- <li><a href="https://www.twitter.com">
                                                     <i class="feather-twitter"></i>
                                                 </a>
                                             </li>
@@ -166,7 +166,7 @@
                                             <li><a href="https://www.linkdin.com/">
                                                     <i class="feather-linkedin"></i>
                                                 </a>
-                                            </li>
+                                            </li>-->
                                         </ul>
 
                                     </div>
@@ -189,16 +189,16 @@
                     <div class="inner">
 
                         <!-- Start Viedo Wrapper  -->
-                        <a class="video-popup-with-text video-popup-wrapper text-center popup-video sidebar-video-hidden mb--15" onclick="return false">
+                        <a class="video-popup-with-text video-popup-wrapper text-center popup-video sidebar-video-hidden mb--15"  [href]="LANDING_COURSE.vimeo_id">
                             <div class="video-content">
-                                <!--<img class="w-100 rbt-radius" src="assets/images/others/video-01.jpg" alt="Video Images">-->
-                                <img class="w-100" [src]="LANDING_COURSE.imagen" alt="Card image">
-                                <!--<div class="position-to-top">
+                                <img class="w-100 rbt-radius" src="assets/images/others/logo_Educatec.jpg" alt="Video Images">
+                               <!-- <img class="w-100" [src]="LANDING_COURSE.imagen" alt="Card image">-->
+                                <div class="position-to-top">
                                     <span class="rbt-btn rounded-player-2 with-animation">
                                         <span class="play-icon"></span>
                                     </span>
-                                </div>-->
-                               <!-- <span class="play-view-text d-block color-white"><i class="feather-eye"></i> Viualización de video</span>-->
+                                </div>
+                                <span class="play-view-text d-block color-white"><i class="feather-eye"></i> Video resumen</span>
                             </div>
                         </a>
                         <!-- End Viedo Wrapper  -->

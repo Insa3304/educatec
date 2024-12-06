@@ -64,7 +64,7 @@ Route::group([
     Route::post('/course-clases/upload_video/{id}', [ClaseGController::class, "upload_video"]);
 });
 
-Route::group(["prefix" => "ecommerce"], function () {
+Route::group(["prefix" => "ecommerce"], function ($router) {
     Route::get("home", [HomeController::class, "home"]);
     Route::get("course-detail/{slug}", [HomeController::class, "course_detail"]);
 
