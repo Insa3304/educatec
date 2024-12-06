@@ -102,6 +102,9 @@ export class ListCartsComponent implements OnInit{
 
 
   }
+  
+
+  
 
  /* initMercadoPago(){
     const mp = new MercadoPago("APP_USR-c4025ed5-b94f-4785-a64e-68d32e21e492");
@@ -189,6 +192,14 @@ export class ListCartsComponent implements OnInit{
       } catch (error) {
         console.error("Error en initMercadoPago:", error);
       }
+
+}
+removeItem(cart:any){
+  this.cartService.deleteCart(cart.id).subscribe((resp:any) => {
+    console.log(resp);
+    alertSuccess("EL ITEM SE A ELIMINADO CORRECTAMENTE ");
+    this.cartService.removeItemCart(cart);
+  })
 
 }
 }

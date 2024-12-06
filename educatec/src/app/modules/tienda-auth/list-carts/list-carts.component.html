@@ -50,7 +50,7 @@
                         <span>S/.{{ cart.total }}</span>
                       </td>
                       <td class="pro-remove">
-                        <a href="#"><i class="feather-x"></i></a>
+                        <a href="#" onclick="return false;" (click)="removeItem(cart)"><i class="feather-x"></i></a>
                       </td>
                     </tr>
                   </ng-container>
@@ -64,31 +64,24 @@
 
             <div class="col-lg-5 offset-lg-1 col-12">
               <div class="cart-summary">
-                <div *ngFor="let cart of listCarts" class="cart-summary-wrap">
+                <div class="cart-summary-wrap">
                   <div class="section-title text-start">
                     <h4 class="title mb--30">Resumen de Compra</h4>
                   </div>
-
-
+              
                   <h2>
                     Total<span>S/.{{ totalSum }}</span>
                   </h2>
                 </div>
-
+              
                 <div class="cart-submit-btn-group">
                   <div class="single-button w-100">
-                    <!-- <button class="rbt-btn btn-gradient rbt-switch-btn rbt-switch-y w-100">
-                                            <span data-text="Checkout">Checkout</span>
-                                        </button>-->
-                                        <div #paypal  ></div>
-                                        <div id="wallet_container"></div>
-
-                                    </div>
-
-
-
-                                </div>
-                            </div>
+                    <div #paypal></div>
+                    <div id="wallet_container"></div>
+                  </div>
+                </div>
+              </div>
+              
                         </div>
 
                     </div>
